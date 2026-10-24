@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- SỬA: tên của bạn và vị trí định hướng, hiện trên tab trình duyệt -->
+<title>[Họ và tên của bạn] – Portfolio</title>
+<meta name="description" content="Portfolio của [Họ và tên của bạn].">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/member.css">
+</head>
+<body data-view="member">
+<!-- Nền động. Đổi data-mode thành "code" (lập trình), "tester" (kiểm thử) hoặc "team" -->
+<canvas id="magic" data-mode="code"></canvas>
+<!-- Muốn có kính lúp theo chuột như trang của Tiên thì thêm dòng này:
+<div class="lens" id="lens" aria-hidden="true"></div> -->
+
+<div id="view-member">
+  <header class="top">
+    <div class="wrap">
+      <a class="back" href="../index.html">‹ Quay lại Nhóm 5</a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#gioi-thieu">Giới thiệu</a><a href="#ky-nang">Kỹ năng</a><a href="#du-an">Dự án</a><a href="#hoat-dong">Hoạt động</a><a href="#lien-he">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- SỬA: phần mở đầu. Ảnh: bỏ file ảnh của bạn vào thư mục assets rồi sửa tên file ở dòng <img> -->
+    <div class="hero">
+      <div class="wrap">
+        <div>
+          <p class="role">[Ngành học và vị trí bạn định hướng]</p>
+          <h1>[Họ và tên của bạn]</h1>
+          <p class="lead">[Một câu ngắn nói về bạn]</p>
+          <div class="btns"><a class="btn main" href="#du-an">Xem dự án</a><a class="btn alt" href="#lien-he">Liên hệ</a></div>
+        </div>
+        <div class="portrait">
+          <div class="orb" aria-hidden="true"></div>
+          <div class="arch"><img src="../assets/ten-ban.jpg" alt="Ảnh chân dung [Họ và tên của bạn]"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SỬA: giới thiệu bản thân (2 đoạn, đừng lặp lại ý) và khung thông tin bên phải -->
+    <section id="gioi-thieu">
+      <div class="wrap cols">
+        <div>
+          <h2>Giới thiệu</h2>
+          <p>[Đoạn 1: bạn là ai, bạn đã học hoặc làm gì.]</p>
+          <p>[Đoạn 2: mục tiêu nghề nghiệp của bạn.]</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Trường</dt><dd>[Tên trường]</dd></div>
+          <div><dt>Ngành</dt><dd>[Ngành học]</dd></div>
+          <div><dt>Nhập học</dt><dd>[Năm nhập học, năm học hiện tại]</dd></div>
+          <div><dt>Sở thích</dt><dd>[Sở thích của bạn]</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- SỬA: kỹ năng. Mỗi kỹ năng là một khối .skill, thêm bớt tuỳ ý -->
+    <section id="ky-nang">
+      <div class="wrap">
+        <h2>Kỹ năng</h2>
+        <div class="skill"><h3>[Kỹ năng 1]</h3><p>[Mô tả ngắn, ví dụ mức độ hoặc bạn dùng nó để làm gì.]</p></div>
+        <div class="skill"><h3>[Kỹ năng 2]</h3><p>[Mô tả ngắn.]</p></div>
+        <div class="skill"><h3>[Kỹ năng 3]</h3><p>[Mô tả ngắn.]</p></div>
+      </div>
+    </section>
+
+    <!-- SỬA: dự án. Cần ít nhất 2 dự án. Dán link GitHub vào href -->
+    <section id="du-an">
+      <div class="wrap">
+        <h2>Dự án</h2>
+        <div class="projects">
+          <article class="project">
+            <h3>[Tên dự án 1]</h3>
+            <p>[Dự án làm gì, giải quyết vấn đề gì.]</p>
+            <ul class="tags"><li>[Công nghệ 1]</li><li>[Công nghệ 2]</li></ul>
+            <a class="btn alt" href="https://github.com/ten-ban/du-an-1" target="_blank" rel="noopener">Xem mã nguồn</a>
+          </article>
+          <article class="project">
+            <h3>[Tên dự án 2]</h3>
+            <p>[Dự án làm gì, giải quyết vấn đề gì.]</p>
+            <ul class="tags"><li>[Công nghệ 1]</li><li>[Công nghệ 2]</li></ul>
+            <a class="btn alt" href="https://github.com/ten-ban/du-an-2" target="_blank" rel="noopener">Xem mã nguồn</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SỬA: hoạt động, chứng chỉ, giải thưởng. Mỗi mốc là một thẻ <li>. Không có thì xoá cả mục này và nút "Hoạt động" ở trên -->
+    <section id="hoat-dong">
+      <div class="wrap">
+        <h2>Hoạt động</h2>
+        <ul class="timeline">
+          <li><time datetime="2025-01-01">[Ngày/tháng/năm]</time><p>[Bạn đã làm gì, ở đâu.]</p></li>
+          <li><time datetime="2025-06-01">[Ngày/tháng/năm]</time><p>[Bạn đã làm gì, ở đâu.]</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SỬA: liên hệ. Chỉ cần email và số điện thoại -->
+    <section id="lien-he" class="contact">
+      <div class="wrap">
+        <h2>Liên hệ</h2>
+        <div class="reach">
+          <a class="rc" href="mailto:email-cua-ban@gmail.com">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7.5 8 6 8-6"/></svg></span>
+            <span><small>Gmail</small><b>email-cua-ban@gmail.com</b></span>
+          </a>
+          <a class="rc" href="tel:0900000000">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 5.3 5.3l1.4-2.2L19 14.5V18a2 2 0 0 1-2 2A14 14 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+            <span><small>Số điện thoại</small><b>0900 000 000</b></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© 2026 [Họ và tên của bạn]</div></footer>
+</div>
+
+<script src="../assets/magic.js"></script>
+</body>
+</html>

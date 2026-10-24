@@ -1,0 +1,61 @@
+/* Giao diện trang chủ Nhóm 5 (index.html) */
+
+:root {
+  --display: "Playfair Display", "Be Vietnam Pro", Georgia, serif;
+  --body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font: 400 1.0625rem/1.75 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; }
+#magic { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+#view-team, #view-tien { position: relative; z-index: 1; min-height: 100vh; }
+
+/* ============ TRANG CHÍNH: NHÓM SÁU NGƯỜI ============ */
+body[data-view="team"] { background: radial-gradient(ellipse at 50% 0%, #1b0c3a 0%, #0a0617 62%) fixed; }
+#view-team { --muted: #a99bc9; --gold: #f0c674; --ink: #f1ebff; color: var(--ink); line-height: 1.6; font-size: 1rem; }
+#view-team :focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; border-radius: 12px; }
+.tm { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+.thero { position: relative; text-align: center; padding: 5.5rem 0 3rem; min-height: 21rem; display: grid; place-content: center; }
+.circle { position: absolute; left: 50%; top: 50%; width: min(96vw, 640px); aspect-ratio: 1; translate: -50% -50%; opacity: .55; pointer-events: none; }
+.circle g { transform-origin: 300px 300px; animation: spin 90s linear infinite; }
+.circle g.rev { animation-duration: 140s; animation-direction: reverse; }
+.circle * { fill: none; stroke: var(--gold); stroke-width: 1; vector-effect: non-scaling-stroke; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.thero h1 { position: relative; margin: 0 0 .1rem; padding: .12em .06em .14em; font: 800 clamp(3.6rem, 13vw, 7.6rem)/1.05 var(--display); font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1; letter-spacing: .01em;
+  background: linear-gradient(100deg, #fff4d1 0%, #f0c674 28%, #c7a4ff 52%, #f0c674 76%, #fff4d1 100%); background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 9s linear infinite; filter: drop-shadow(0 0 24px rgba(139,108,246,.6)); }
+.thero h1 i { font-style: normal; font-weight: 800; padding: 0 .04em; margin-right: .1em; }
+@keyframes shimmer { to { background-position: 200% 0; } }
+.orn { position: relative; display: flex; align-items: center; justify-content: center; gap: .8rem; margin: .3rem 0 1rem; }
+.orn::before, .orn::after { content: ""; width: min(22vw, 130px); height: 1px; background: linear-gradient(90deg, transparent, #f0c674); }
+.orn::after { transform: scaleX(-1); }
+.orn svg { width: 15px; height: 15px; fill: #f0c674; filter: drop-shadow(0 0 7px #f0c674); }
+.thero p { position: relative; margin: 0; color: var(--muted); font-size: 1.1rem; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; list-style: none; margin: 0; padding: 0; }
+.card { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; height: 100%; width: 100%; font: inherit; text-align: left; color: inherit; border: 1px solid rgba(169,155,201,.22); border-radius: 18px; text-decoration: none; background: rgba(20,10,44,.55); backdrop-filter: blur(6px); transition: transform .25s, border-color .25s, box-shadow .25s; }
+.av { flex: none; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font: 700 1.9rem/1 var(--display); color: var(--gold); border: 1px solid rgba(240,198,116,.28); background: rgba(240,198,116,.07); overflow: hidden; }
+.av img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+.card b { display: block; font: 600 1.08rem/1.35 var(--body); }
+.card small { color: var(--muted); font-size: .88rem; }
+.card.on { border-color: var(--gold); box-shadow: 0 0 0 1px rgba(240,198,116,.25), 0 0 34px rgba(240,198,116,.22); cursor: pointer; }
+.card.on .av { border-color: var(--gold); box-shadow: 0 0 18px rgba(240,198,116,.5); }
+.card.on small { color: var(--gold); }
+.card.on:hover { transform: translateY(-6px); box-shadow: 0 0 0 1px var(--gold), 0 14px 44px rgba(240,198,116,.35); }
+.card.off { opacity: .62; }
+.portal { position: fixed; inset: 0; z-index: 20; background: #1d0a10; clip-path: circle(0 at var(--x) var(--y)); transition: clip-path .7s cubic-bezier(.6,0,.2,1), opacity .6s; pointer-events: none; }
+.portal.go { clip-path: circle(150vmax at var(--x) var(--y)); }
+.portal.out { opacity: 0; }
+
+@media (max-width: 860px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 800px) {
+  .hero .wrap, .cols, .projects { grid-template-columns: 1fr; gap: 2rem; }
+  .hero { padding-bottom: 3rem; } .portrait { order: -1; width: min(78%, 300px); } .reach { grid-template-columns: 1fr; }
+}
+@media (max-width: 540px) { .grid { grid-template-columns: 1fr; } .thero { padding-top: 3.5rem; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; } .circle g, .orb { animation: none; }
+  .hero h1, .role, .lead, .btns { animation: none; } .portal, .card, .rc { transition: none; } .thero h1 { animation: none; } .lens { display: none !important; }
+}

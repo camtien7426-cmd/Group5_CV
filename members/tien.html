@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nguyễn Thị Cẩm Tiên – Sinh viên IT, định hướng Tester</title>
+<meta name="description" content="Portfolio của Nguyễn Thị Cẩm Tiên, sinh viên Công nghệ thông tin định hướng kiểm thử phần mềm.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/member.css">
+</head>
+<body data-view="member">
+<canvas id="magic" data-mode="tester"></canvas>
+<div class="lens" id="lens" aria-hidden="true"></div>
+<div id="view-member">
+<header class="top">
+    <div class="wrap">
+      <a class="back" href="../index.html">‹ Quay lại Nhóm 5</a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#gioi-thieu">Giới thiệu</a><a href="#ky-nang">Kỹ năng</a><a href="#du-an">Dự án</a><a href="#hoat-dong">Hoạt động</a><a href="#lien-he">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="wrap">
+        <div>
+          <p class="role">Sinh viên Công nghệ thông tin, định hướng Tester</p>
+          <h1>Nguyễn Thị Cẩm Tiên</h1>
+          <p class="lead">Cẩn thận từng chi tiết, để người dùng không phải gặp lỗi.</p>
+          <div class="btns"><a class="btn main" href="#du-an">Xem dự án</a><a class="btn alt" href="#lien-he">Liên hệ</a></div>
+        </div>
+        <div class="portrait">
+          <div class="orb" aria-hidden="true"></div>
+          <div class="arch"><img src="../assets/tien.jpg" alt="Ảnh chân dung Nguyễn Thị Cẩm Tiên" width="760" height="944"></div>
+        </div>
+      </div>
+    </div>
+
+    <section id="gioi-thieu">
+      <div class="wrap cols">
+        <div>
+          <h2>Giới thiệu</h2>
+          <p>Trước khi đến với kiểm thử phần mềm, mình đã có một năm làm việc trong lĩnh vực bất động sản. Giờ mình quay lại với ngành học của mình và chọn hướng đi Tester.</p>
+          <p>Mình là người cẩn thận, thích tìm ra những chỗ chưa ổn trong một sản phẩm trước khi người dùng gặp phải. Mình đang rèn nghề từng bước, và muốn mỗi lỗi mình báo cáo đều rõ ràng, dễ hiểu.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Trường</dt><dd>Đại học Giao thông Vận tải TP. Hồ Chí Minh</dd></div>
+          <div><dt>Ngành</dt><dd>Công nghệ thông tin</dd></div>
+          <div><dt>Nhập học</dt><dd>2024, hiện là sinh viên năm 3</dd></div>
+          <div><dt>Sở thích</dt><dd>Chơi game, như PUBG</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="ky-nang">
+      <div class="wrap cols">
+        <div>
+          <h2>Kỹ năng</h2>
+          <div class="skill"><h3>Viết test case</h3><p>Mô tả bước thực hiện, dữ liệu nhập và kết quả mong đợi.</p></div>
+          <div class="skill"><h3>Kiểm thử giao diện</h3><p>Kiểm tra bố cục, nút bấm và thông báo trên từng màn hình.</p></div>
+          <div class="skill"><h3>Báo cáo lỗi</h3><p>Ghi rõ các bước tái hiện để người sửa lỗi hiểu ngay.</p></div>
+          <div class="skill"><h3>Đọc hiểu code</h3><p>Python và C++.</p></div>
+        </div>
+        <div class="ticket" role="group" aria-label="Ví dụ một báo cáo lỗi">
+          <div class="th"><span>BUG-001</span><em>Ví dụ minh họa</em></div>
+          <dl>
+            <div><dt>Tiêu đề</dt><dd>Nút “Đăng nhập” không phản hồi khi nhấn lần đầu</dd></div>
+            <div><dt>Các bước</dt><dd><ol><li>Mở trang đăng nhập</li><li>Nhập đúng tài khoản và mật khẩu</li><li>Nhấn “Đăng nhập”</li></ol></dd></div>
+            <div><dt>Mong đợi</dt><dd>Chuyển vào trang chủ</dd></div>
+            <div><dt>Thực tế</dt><dd>Không có phản hồi, phải nhấn lần hai</dd></div>
+            <div><dt>Mức độ</dt><dd>Trung bình</dd></div>
+          </dl>
+          <p class="note">Đây là ví dụ cách mình trình bày một báo cáo lỗi, không phải lỗi thật của dự án nào.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="du-an">
+      <div class="wrap">
+        <h2>Dự án</h2>
+        <div class="projects">
+          <article class="project">
+            <h3>Drowsiness Alert: cảnh báo ngủ gật qua webcam</h3>
+            <p>Ứng dụng dùng webcam theo dõi khuôn mặt tài xế theo thời gian thực, nhận biết dấu hiệu buồn ngủ và phát âm thanh cảnh báo để tránh tai nạn khi lái xe.</p>
+            <ul class="tags"><li>Webcam</li><li>Thời gian thực</li><li>Cảnh báo bằng âm thanh</li></ul>
+            <small>Công nghệ chi tiết và đường dẫn: đang cập nhật.</small>
+          </article>
+          <article class="project empty">
+            <h3>Dự án tiếp theo</h3>
+            <p>Mình sẽ bổ sung thêm dự án tại đây.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="hoat-dong">
+      <div class="wrap">
+        <h2>Hoạt động</h2>
+        <p class="quote">“Mỗi giọt máu cho đi, một cuộc đời ở lại.”</p>
+        <ul class="timeline">
+          <li><time datetime="2025-06-19">19/06/2025</time><p>Hiến máu tại Bệnh viện Truyền máu Huyết học.</p></li>
+          <li><time datetime="2026-01-04">04/01/2026</time><p>Hiến máu tại Trung tâm Hiến máu Nhân đạo.</p></li>
+        </ul>
+        <p class="more">Hai lần hiến máu giúp mình hiểu rằng một việc nhỏ cũng có thể giúp ích cho người đang cần, và mình mong sẽ tiếp tục duy trì hoạt động này.</p>
+      </div>
+    </section>
+
+    <section id="lien-he" class="contact">
+      <div class="wrap">
+        <h2>Liên hệ</h2>
+        <div class="reach">
+          <a class="rc" href="mailto:camtien7426@gmail.com">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7.5 8 6 8-6"/></svg></span>
+            <span><small>Gmail</small><b>camtien7426@gmail.com</b></span>
+          </a>
+          <a class="rc" href="tel:0338462330">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 5.3 5.3l1.4-2.2L19 14.5V18a2 2 0 0 1-2 2A14 14 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+            <span><small>Số điện thoại</small><b>0338 462 330</b></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap">© 2026 Nguyễn Thị Cẩm Tiên</div></footer>
+</div>
+<script src="../assets/magic.js"></script>
+</body>
+</html>
