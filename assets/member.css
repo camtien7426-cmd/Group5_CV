@@ -113,3 +113,81 @@ footer { padding: 2rem 0 3rem; border-top: 1px solid var(--line); color: var(--m
   html { scroll-behavior: auto; } .circle g, .orb { animation: none; }
   .hero h1, .role, .lead, .btns { animation: none; } .portal, .card, .rc { transition: none; } .thero h1 { animation: none; } .lens { display: none !important; }
 }
+/* ============= TRANG CỦA ANH THƯ: BUSINESS ANALYST ================ */
+
+/* 1. Nền Đêm Vàng Gold & Chuột Máy Bay */
+body[data-view="thu"] {
+  background-color: #0f0c08 !important;
+  background-image: 
+    radial-gradient(ellipse at 85% 15%, rgba(245,158,11,0.18), transparent 50%),
+    radial-gradient(ellipse at 15% 85%, rgba(180,83,9,0.2), transparent 60%) !important;
+  background-attachment: fixed !important;
+  color: #fef3c7 !important;
+  cursor: none !important;
+}
+body[data-view="thu"] a, body[data-view="thu"] button { cursor: none !important; }
+body[data-view="thu"] .lens { display: none !important; }
+
+#plane-cursor {
+  position: fixed; top: 0; left: 0; z-index: 99999; pointer-events: none; opacity: 0;
+  transition: opacity .3s; filter: drop-shadow(0 0 10px #f59e0b);
+}
+
+/* 2. Biến Màu & Bố Cục Hero (Tăng cỡ ảnh 330px) */
+body[data-view="thu"] #view-member {
+  --panel: rgba(28,22,15,.88); --ink: #fef3c7; --muted: #d97706; --gold: #f59e0b; --line: rgba(245,158,11,.25);
+}
+body[data-view="thu"] .hero .wrap {
+  display: grid !important; 
+  grid-template-columns: 330px 1fr !important; /* Cột ảnh 330px */
+  gap: 2.5rem !important; 
+  align-items: center !important; 
+  max-width: 1080px !important; 
+  margin: 0 auto !important;
+}
+
+/* 3. Khung Ảnh Tròn Tỏa Sáng (Phóng to 330px) */
+body[data-view="thu"] .portrait-card { position: relative; width: 330px; height: 330px; }
+body[data-view="thu"] .glow-backdrop {
+  position: absolute; inset: -14px; border-radius: 50%; filter: blur(18px); opacity: .8;
+  background: radial-gradient(circle, rgba(245,158,11,.5) 0%, rgba(251,191,36,.1) 70%);
+}
+body[data-view="thu"] .arch {
+  position: relative !important; width: 100% !important; height: 100% !important; border-radius: 50% !important;
+  border: 3px solid var(--gold) !important; box-shadow: 0 0 35px rgba(245,158,11,.35) !important; background: #18120c !important;
+}
+body[data-view="thu"] .arch img { object-position: center 15% !important; border-radius: 50% !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+
+/* 4. Tên "Nguyễn Thị Anh Thư" Khóa Trọn 1 Hàng Duy Nhất */
+body[data-view="thu"] .hero h1 { 
+  color: #fff !important; 
+  text-shadow: 0 0 30px rgba(245,158,11,.4) !important; 
+  font-size: clamp(1.8rem, 3.2vw, 2.7rem) !important; 
+  white-space: nowrap !important; /* Ép tên lên trọn 1 hàng */
+  margin: 0 0 1rem 0 !important;
+}
+
+body[data-view="thu"] .role, body[data-view="thu"] h3, body[data-view="thu"] .back, 
+body[data-view="thu"] .facts dt, body[data-view="thu"] .ticket dt, body[data-view="thu"] .timeline time { color: var(--gold) !important; }
+body[data-view="thu"] .lead, body[data-view="thu"] nav a { color: #fde68a !important; }
+
+body[data-view="thu"] .btn.main { background: var(--gold) !important; color: #0f0c08 !important; border-color: var(--gold) !important; box-shadow: 0 0 22px rgba(245,158,11,.45) !important; font-weight: 700 !important; }
+body[data-view="thu"] .btn.alt { border-color: var(--gold) !important; color: var(--gold) !important; background: rgba(245,158,11,.08) !important; }
+
+body[data-view="thu"] .project, body[data-view="thu"] .ticket, body[data-view="thu"] .facts, body[data-view="thu"] .rc {
+  background: var(--panel) !important; border-color: var(--line) !important; backdrop-filter: blur(16px);
+}
+body[data-view="thu"] .project:hover, body[data-view="thu"] .rc:hover { border-color: var(--gold) !important; box-shadow: 0 0 30px rgba(245,158,11,.3) !important; }
+
+/* 5. Chỉ Số BA Stats & Tags Kỹ Năng */
+body[data-view="thu"] .ba-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin: 1.2rem 0; }
+body[data-view="thu"] .stat-card { padding: .85rem .5rem; background: rgba(245,158,11,.1); border: 1px solid var(--line); border-radius: 12px; text-align: center; }
+body[data-view="thu"] .stat-card b { display: block; font-size: 1.5rem; color: var(--gold); }
+body[data-view="thu"] .stat-card span { font-size: .78rem; color: #fde68a; }
+body[data-view="thu"] .tags li { background: rgba(245,158,11,.1) !important; color: var(--gold) !important; border-color: var(--line) !important; }
+
+@media (max-width: 900px) {
+  body[data-view="thu"] .hero .wrap { grid-template-columns: 1fr !important; text-align: center; }
+  body[data-view="thu"] .hero h1 { white-space: normal !important; }
+  body[data-view="thu"] .portrait-card { justify-self: center; width: 250px; height: 250px; }
+}
