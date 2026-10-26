@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Đặng Gia Bảo – Sinh viên Mạng máy tính, định hướng Network Engineer</title>
+<meta name="description" content="Portfolio của Đặng Gia Bảo, sinh viên Mạng máy tính và truyền thông dữ liệu, định hướng Network Engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f5f8;--surface:#fff;--ink:#0f1720;--muted:#55606e;--line:#dde2e8;
+  --accent:#ff5a1f;--accent-ink:#c93d08;--lime:#c8f04d;--night:#0b1218;--night2:#141d27;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1016;--surface:#141b23;--ink:#f2f5f8;--muted:#9aa6b4;--line:#243040;--accent-ink:#ff7a45}}
+:root[data-theme="dark"]{--bg:#0b1016;--surface:#141b23;--ink:#f2f5f8;--muted:#9aa6b4;--line:#243040;--accent-ink:#ff7a45}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Be Vietnam Pro',system-ui,sans-serif;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--night);z-index:90}
+h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.2;margin:0}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;position:relative}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:80;background:rgba(11,18,24,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #1e2a36}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:64px;gap:16px}
+#pg{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,var(--accent),var(--lime));transform:scaleX(0);transform-origin:0 50%}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;text-decoration:none}
+.logo i{display:grid;place-items:center;width:34px;height:34px;background:var(--accent);font-style:normal;border-radius:9px;transform:skewX(-8deg)}
+.top nav{display:flex;gap:4px}
+.top nav a{color:#b8c3cf;text-decoration:none;font-weight:500;font-size:14.5px;padding:8px 14px;border-radius:8px}
+.top nav a:hover{color:#fff;background:#1a2530}
+
+/* hero */
+.hero{position:relative;background:var(--night);color:#fff;padding:72px 0 130px;clip-path:polygon(0 0,100% 0,100% calc(100% - 56px),0 100%)}
+.wm{position:absolute;left:-1vw;bottom:40px;font-weight:800;font-size:clamp(6rem,21vw,17rem);line-height:1;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px #1d2b39;white-space:nowrap;pointer-events:none;user-select:none}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.role{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:14px;color:var(--lime);margin:0 0 22px}
+.role::before{content:"";width:34px;height:4px;background:var(--accent);transform:skewX(-30deg)}
+.hero h1{font-size:clamp(3.2rem,8.5vw,5.8rem);line-height:1.08;letter-spacing:-.035em;margin-bottom:22px}
+.hero h1 span{color:var(--accent)}
+.lead{font-size:1.2rem;color:#c5cfda;max-width:30ch;margin:0 0 32px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-weight:600;font-size:15px;text-decoration:none;padding:14px 28px;border-radius:10px;transition:transform .15s,background .15s}
+.btn.main{background:var(--accent);color:#fff}.btn.main:hover{background:#ff7340;transform:translateY(-2px)}
+.btn.alt{border:1.5px solid #3a4a5b;color:#fff}.btn.alt:hover{border-color:#fff}
+.stats{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
+.stats div{border-left:3px solid var(--lime);padding-left:14px}
+.stats b{display:block;font-size:1.9rem;font-weight:800;line-height:1.1}
+.stats small{color:#9fb0c1;font-size:13px}
+
+.map{position:relative;margin:0 0 30px;background:var(--night2);border:1px solid #243242;border-radius:24px;padding:14px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+.map svg{display:block;width:100%;height:auto}
+.map figcaption{padding:10px 8px 4px;font-size:13px;color:#9fb0c1;text-align:center}
+.term{position:absolute;left:-30px;bottom:-34px;background:#05090d;border:1px solid #2b3b4b;border-radius:12px;padding:10px 16px;font:500 12.5px/1.7 'IBM Plex Mono',monospace;color:#c9f7e4;box-shadow:0 14px 30px rgba(0,0,0,.5)}
+.term b{color:var(--accent);font-weight:500}.term u{text-decoration:none;color:var(--lime)}
+.ct{fill:none;stroke:#1f2e3d;stroke-width:1.5}
+.cab{fill:none;stroke:#3a4c5e;stroke-width:3}
+.tun{fill:none;stroke:#ff5a1f;stroke-width:4;stroke-linecap:round;stroke-dasharray:2 12;animation:flow 1s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-14}}
+.pin{fill:#0b1218;stroke:#fff;stroke-width:3}
+.map text{fill:#fff;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500}
+.map text.s{fill:#9fb0c1;font-family:'Be Vietnam Pro',sans-serif;font-size:12.5px}
+.map text.o{fill:#ff8a5c;font-family:'Be Vietnam Pro',sans-serif;font-weight:600;font-size:13px}
+
+/* ticker */
+.tick{position:relative;z-index:2;margin-top:-62px;background:var(--accent);color:var(--night);transform:rotate(-1.6deg);overflow:hidden;border-block:3px solid var(--night);white-space:nowrap}
+.tick div{display:inline-block;padding:12px 0;font-weight:800;font-size:1.1rem;animation:slide 28s linear infinite}
+.tick span{margin:0 22px}.tick span::after{content:"✦";margin-left:44px;color:var(--lime)}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.tun,.tick div{animation:none}.pk{display:none}}
+
+/* sections */
+section{padding:90px 0 0}
+h2{font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:34px;display:flex;align-items:center;gap:16px}
+h2::after{content:"";height:4px;width:56px;background:var(--accent);transform:skewX(-30deg)}
+.cols{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:start}
+.cols p{margin:0 0 18px;font-size:1.05rem;color:var(--muted)}
+.facts{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:10px 26px}
+.facts div{padding:14px 0;border-bottom:1px solid var(--line)}.facts div:last-child{border:0}
+.facts dt{font-size:13px;font-weight:600;color:var(--accent-ink)}
+.facts dd{margin:0;font-weight:600}
+
+.fun{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.tile{border-radius:22px;padding:24px 22px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;font-weight:800;font-size:1.15rem;color:var(--night);transition:transform .25s}
+.tile em{font-style:normal;font-size:3rem;line-height:1;display:block;transition:transform .25s}
+.tile:hover{transform:translateY(-6px) rotate(-2deg)}.tile:hover em{transform:scale(1.2) rotate(10deg)}
+.tile:nth-child(1){background:var(--accent)}.tile:nth-child(2){background:var(--lime)}
+.tile:nth-child(3){background:var(--night);color:#fff;border:1px solid #243242}.tile:nth-child(4){background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+
+.stack{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.layer{grid-column:span 2;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;position:relative;overflow:hidden}
+.layer.w{grid-column:span 3}
+.layer em{position:absolute;right:20px;top:16px;font-style:normal;font-size:2.2rem;opacity:.9}
+.layer h3{font-size:1.15rem;margin-bottom:16px;max-width:80%}
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{font:500 13px 'IBM Plex Mono',monospace;padding:4px 11px;border-radius:7px;background:var(--bg);border:1px solid var(--line)}
+.layer.dk{background:var(--night);color:#fff;border-color:#243242}.dk .chips li{background:#0f1820;border-color:#2b3b4b;color:var(--lime)}
+.layer.or{background:var(--accent);color:var(--night);border-color:var(--accent)}.or .chips li{background:rgba(11,18,24,.12);border-color:rgba(11,18,24,.3);color:var(--night)}
+.soft .chips li{font-family:'Be Vietnam Pro',sans-serif;font-weight:600}
+
+.proj{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:34px;margin-bottom:22px;transition:transform .2s,border-color .2s}
+.proj:hover{transform:translateY(-4px);border-color:var(--accent)}
+.tag{display:inline-block;font-weight:600;font-size:12.5px;color:#fff;background:var(--accent-ink);border-radius:6px;padding:2px 12px;margin-bottom:14px;transform:skewX(-8deg)}
+.proj h3{font-size:1.5rem;margin-bottom:14px}
+.proj ul{margin:0 0 16px;padding-left:20px;color:var(--muted)}.proj li{margin-bottom:6px}
+.proj small{color:var(--muted)}
+.win{background:#05090d;border:1px solid #2b3b4b;border-radius:16px;overflow:hidden}
+.bar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:#121b25;border-bottom:1px solid #2b3b4b}
+.bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.bar em{margin-left:8px;font:500 12px 'IBM Plex Mono',monospace;color:#8798aa;font-style:normal}
+.cli{margin:0;padding:18px 20px;color:#c9f7e4;font:400 13.5px/1.9 'IBM Plex Mono',monospace;overflow-x:auto}
+.cli b{color:var(--accent);font-weight:500}
+.cap{display:block;color:var(--lime);font-family:'Be Vietnam Pro',sans-serif;font-size:13px;font-weight:600;margin-bottom:6px}
+
+.path{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin-bottom:22px}
+.path b{display:flex;flex-direction:column;justify-content:center;min-width:190px;padding:24px 32px;background:var(--surface);border:1px solid var(--line);border-radius:20px;font-size:2.3rem;font-weight:800;letter-spacing:-.02em;border-bottom:6px solid var(--accent)}
+.path b small{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:0}
+.path b+b{background:var(--night);color:#fff;border-color:#243242;border-bottom-color:var(--lime)}.path b+b small{color:#9fb0c1}
+.path span{align-self:center;padding:0 16px;font-size:2rem;color:var(--accent-ink);font-weight:800}
+.more{color:var(--muted);max-width:56ch;margin:0}
+
+.contact{margin-top:90px;background:var(--night);color:#fff;clip-path:polygon(0 56px,100% 0,100% 100%,0 100%);padding:140px 0 100px}
+.contact h2{font-size:clamp(2.6rem,7vw,4.6rem);letter-spacing:-.035em;margin-bottom:14px;display:block}
+.contact h2::after{display:none}.contact h2 span{color:var(--accent)}
+.contact p{color:#9fb0c1;margin:0 0 36px}
+.reach{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.rc{display:flex;flex-direction:column;gap:4px;text-decoration:none;background:var(--night2);border:1px solid #243242;border-radius:18px;padding:26px 28px;transition:all .15s;overflow-wrap:anywhere}
+.rc:hover{border-color:var(--accent);transform:translateY(-3px);background:#1a2531}
+.rc small{color:var(--lime);font-weight:600;font-size:13px}.rc b{font-size:1.15rem;font-weight:600}
+footer{background:var(--night);color:#8798aa;text-align:center;font-size:14px;padding:0 0 calc(34px + env(safe-area-inset-bottom,0px))}
+
+@media (max-width:900px){
+  .hero .wrap,.cols,.proj,.reach{grid-template-columns:1fr}
+  .hero{padding:44px 0 110px}.hero .wrap{gap:40px}
+  .term{position:static;margin-top:14px}
+  .map{margin-bottom:0}
+  .fun{grid-template-columns:1fr 1fr}
+  .layer,.layer.w{grid-column:span 6}
+  section{padding-top:64px}.proj{padding:24px}
+  .top nav a:not(:last-child){display:none}
+}
+
+.bk{border:1px solid #2b3b4b;margin-right:8px}
+.photo{position:relative;margin:0 auto;width:min(100%,410px)}
+.photo::before{content:"";position:absolute;inset:24px -24px -24px 24px;background:var(--accent);border-radius:30px;transform:rotate(3deg)}
+.photo::after{content:"";position:absolute;inset:-14px 16px 16px -14px;border:3px solid var(--lime);border-radius:30px;transform:rotate(-2.5deg)}
+.frame{position:relative;z-index:1;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:linear-gradient(160deg,#1f3043,#0f1822);border:3px solid #fff}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.ph{position:absolute;inset:0;display:grid;place-items:center;font-size:10rem;font-weight:800;color:#29405a}
+.tg1,.tg2{position:absolute;z-index:2;font-weight:800;color:var(--night)}
+.tg1{left:-20px;bottom:38px;background:#fff;padding:8px 18px;border-radius:10px;transform:rotate(-4deg);box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.tg2{right:-16px;top:28px;background:var(--lime);width:78px;height:78px;border-radius:50%;display:grid;place-items:center;transform:rotate(10deg);font-size:15px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.stk{display:grid;gap:16px}.stk .map{margin:0}
+@media (max-width:900px){.bk{display:none}.photo{width:min(86%,360px);margin-top:10px}}
+
+.champ{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center;margin-top:28px;background:var(--night);color:#fff;border:1px solid #243242;border-radius:28px;padding:30px}
+.champ h3{font-size:clamp(1.6rem,3.4vw,2.2rem);margin-bottom:14px;letter-spacing:-.03em}
+.champ p{margin:0 0 12px;color:#c5cfda}
+.shot{position:relative;margin:0}
+.frame2{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:linear-gradient(150deg,#ff5a1f,#b93a0a);transform:rotate(-1.5deg);border:3px solid #fff}
+.frame2 img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph2{position:absolute;inset:0;display:grid;place-items:center;font-size:6rem}
+.tg3{position:absolute;left:-10px;top:-14px;z-index:2;background:var(--lime);color:var(--night);font-weight:800;padding:6px 16px;border-radius:10px;transform:rotate(-5deg);box-shadow:0 8px 20px rgba(0,0,0,.4)}
+@media (max-width:900px){.champ{grid-template-columns:1fr;padding:22px;gap:26px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top"><i>B</i>Gia Bảo</a>
+    <nav aria-label="Điều hướng chính">
+      <a class="bk" href="../../index.html">‹ Quay lại Nhóm 5</a><a href="#gioi-thieu">Giới thiệu</a><a href="#ky-nang">Kỹ năng</a><a href="#du-an">Dự án</a><a href="#chung-chi">Chứng chỉ</a><a href="#lien-he">Liên hệ</a>
+    </nav>
+  </div>
+  <div id="pg"></div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wm" aria-hidden="true">NETWORK</div>
+    <div class="wrap">
+      <div>
+        <p class="role">Network Engineer</p>
+        <h1>Đặng<br>Gia Bảo<span>.</span></h1>
+        <p class="lead">Làm cho mọi gói tin đi đúng đường, về đúng nơi.</p>
+        <div class="btns"><a class="btn main" href="#du-an">Xem dự án</a><a class="btn alt" href="#lien-he">Liên hệ</a></div>
+        <div class="stats">
+          <div><b>Năm 3</b><small>Mạng máy tính</small></div>
+          <div><b>2</b><small>Chứng chỉ</small></div>
+          <div><b>2</b><small>Dự án</small></div>
+        </div>
+      </div>
+      <figure class="photo">
+        <div class="frame"><span class="ph" aria-hidden="true">B</span><img src="../../assets/bao.jpg" alt="Ảnh Đặng Gia Bảo"> onerror="this.remove()"></div>
+        <span class="tg1">Network Engineer</span><span class="tg2">Năm 3</span>
+      </figure>
+    </div>
+  </div>
+
+  <div class="tick" aria-hidden="true"><div>
+    <span>TCP/IP</span><span>OSPF</span><span>VLAN</span><span>HSRP</span><span>NAT/PAT</span><span>ACL</span><span>IPsec VPN</span><span>STP</span><span>DHCP</span><span>EVE-NG</span>
+    <span>TCP/IP</span><span>OSPF</span><span>VLAN</span><span>HSRP</span><span>NAT/PAT</span><span>ACL</span><span>IPsec VPN</span><span>STP</span><span>DHCP</span><span>EVE-NG</span>
+  </div></div>
+
+  <section id="gioi-thieu">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <h2>Giới thiệu</h2>
+          <p>Mình là sinh viên năm 3 ngành Mạng máy tính và truyền thông dữ liệu. Mình học nhiều chứng chỉ về mạng và thích tự tay dựng, cấu hình, rồi kiểm tra từng hệ thống trên phần mềm giả lập EVE-NG.</p>
+          <p>Mục tiêu của mình là trở thành Network Engineer. Mình muốn tiếp tục hoàn thiện kiến thức, rèn kỹ năng làm việc nhóm và trưởng thành hơn qua từng dự án.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Trường</dt><dd>ĐH Giao thông Vận tải TP. HCM</dd></div>
+          <div><dt>Ngành</dt><dd>Mạng máy tính và truyền thông dữ liệu</dd></div>
+          <div><dt>Nhập học</dt><dd>2024, hiện là sinh viên năm 3</dd></div>
+          <div><dt>Sở thích</dt><dd>Bóng rổ, đi phượt, nghe nhạc, chơi game</dd></div>
+        </dl>
+      </div>
+      <div class="fun">
+        <div class="tile"><em>🏀</em>Bóng rổ</div>
+        <div class="tile"><em>🏍️</em>Đi phượt</div>
+        <div class="tile"><em>🎧</em>Nghe nhạc</div>
+        <div class="tile"><em>🎮</em>Chơi game</div>
+      </div>
+      <div class="champ">
+        <figure class="shot">
+          <div class="frame2"><span class="ph2" aria-hidden="true">🏆</span><img src="bao1.jpg" alt="Đặng Gia Bảo cùng đội bóng rổ vô địch giải NUC" onerror="this.remove()"></div>
+          <span class="tg3">🏆 Vô địch</span>
+        </figure>
+        <div>
+          <h3>Vô địch giải bóng rổ NUC</h3>
+          <p>Ngoài giờ học mạng, mình chơi bóng rổ và đã góp sức giúp ĐH Giao thông Vận tải TP. HCM giành chức vô địch giải NUC.</p>
+          <p>Bóng rổ dạy mình tinh thần đồng đội, điều mình cũng mang vào các dự án nhóm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ky-nang">
+    <div class="wrap">
+      <h2>Kỹ năng</h2>
+      <div class="stack">
+        <div class="layer"><em>🌐</em><h3>Nền tảng mạng</h3><ul class="chips"><li>TCP/IP</li><li>OSI</li><li>Subnetting</li></ul></div>
+        <div class="layer dk"><em>🧭</em><h3>Định tuyến</h3><ul class="chips"><li>Static Route</li><li>RIP</li><li>OSPF</li></ul></div>
+        <div class="layer"><em>🔀</em><h3>Chuyển mạch</h3><ul class="chips"><li>VLAN</li><li>Trunking</li><li>STP</li><li>HSRP</li></ul></div>
+        <div class="layer w or"><em>🛡️</em><h3>Dịch vụ mạng</h3><ul class="chips"><li>DHCP</li><li>NAT</li><li>ACL</li><li>VPN</li></ul></div>
+        <div class="layer w soft"><em>🤝</em><h3>Kỹ năng mềm</h3><ul class="chips"><li>Làm việc nhóm</li><li>Giải quyết vấn đề</li><li>Tự học</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="du-an">
+    <div class="wrap">
+      <h2>Dự án</h2>
+      <article class="proj">
+        <div>
+          <span class="tag">EVE-NG</span>
+          <h3>Xây dựng mô hình mạng doanh nghiệp</h3>
+          <ul>
+            <li>Thiết kế mạng nhiều VLAN với router và switch Cisco.</li>
+            <li>Cấu hình Trunk, Inter-VLAN Routing, STP và HSRP.</li>
+            <li>Triển khai OSPF, DHCP, NAT/PAT để định tuyến và ra Internet.</li>
+            <li>Dùng ACL kiểm soát truy cập giữa các phòng ban.</li>
+          </ul>
+          <small>Đường dẫn GitHub: đang cập nhật.</small>
+        </div>
+        <div class="win"><div class="bar"><i></i><i></i><i></i><em>EVE-NG</em></div>
+        <pre class="cli" aria-label="Các lệnh kiểm tra"><code><span class="cap">Các lệnh mình dùng để kiểm tra</span><b>#</b> ping
+<b>#</b> traceroute
+<b>#</b> show ip route
+<b>#</b> show vlan brief
+<b>#</b> show spanning-tree</code></pre></div>
+      </article>
+      <article class="proj">
+        <div>
+          <span class="tag">EVE-NG</span>
+          <h3>Triển khai VPN Site-to-Site bằng IPsec</h3>
+          <ul>
+            <li>Mô phỏng kết nối bảo mật giữa trụ sở chính và chi nhánh qua mạng ISP.</li>
+            <li>Cấu hình IKE Phase 1, IPsec Phase 2, Pre-shared Key, Transform Set và Crypto Map.</li>
+            <li>Dùng Crypto ACL xác định lưu lượng cần mã hóa.</li>
+            <li>Kiểm tra kết nối giữa máy tính ở hai bên.</li>
+          </ul>
+          <small>Đường dẫn GitHub: đang cập nhật.</small>
+        </div>
+        <div class="stk"><figure class="map">
+        <svg viewBox="0 0 560 330" role="img" aria-label="Sơ đồ VPN Site-to-Site: trụ sở và chi nhánh nối với nhau qua mạng ISP bằng đường hầm IPsec">
+          <ellipse class="ct" cx="280" cy="170" rx="250" ry="140"/><ellipse class="ct" cx="280" cy="170" rx="200" ry="108"/>
+          <ellipse class="ct" cx="280" cy="170" rx="150" ry="76"/><ellipse class="ct" cx="280" cy="170" rx="100" ry="46"/>
+          <path id="tp" class="tun" d="M96 170 C 150 40, 410 40, 464 170"/>
+          <circle class="pk" r="8" fill="#c8f04d" stroke="#0b1218" stroke-width="3"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#tp"/></animateMotion></circle>
+          <text class="o" x="280" y="62" text-anchor="middle">Đường hầm IPsec</text>
+          <path class="cab" d="M96 170 H 226 M334 170 H 464"/>
+          <circle class="pin" cx="96" cy="170" r="17"/><text x="96" y="208" text-anchor="middle">R1</text>
+          <circle class="pin" cx="280" cy="170" r="17"/><text x="280" y="208" text-anchor="middle">ISP</text>
+          <circle class="pin" cx="464" cy="170" r="17"/><text x="464" y="208" text-anchor="middle">R2</text>
+          <text class="s" x="96" y="136" text-anchor="middle">Trụ sở</text><text class="s" x="464" y="136" text-anchor="middle">Chi nhánh</text>
+          <path class="cab" d="M96 187 V 250 M464 187 V 250"/>
+          <rect class="pin" x="52" y="250" width="88" height="34" rx="9"/><text x="96" y="272" text-anchor="middle">LAN HQ</text>
+          <rect class="pin" x="420" y="250" width="88" height="34" rx="9"/><text x="464" y="272" text-anchor="middle">LAN CN</text>
+        </svg>
+        <figcaption>Mô hình VPN Site-to-Site dựng trên EVE-NG.</figcaption>
+      </figure><div class="win"><div class="bar"><i></i><i></i><i></i><em>EVE-NG</em></div>
+        <pre class="cli" aria-label="Các lệnh kiểm tra"><code><span class="cap">Kiểm tra trạng thái VPN</span><b>#</b> show crypto isakmp sa
+<b>#</b> show crypto ipsec sa</code></pre></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="chung-chi">
+    <div class="wrap">
+      <h2>Chứng chỉ</h2>
+      <div class="path"><b>CCNA<small>Học tại VNPro</small></b><span aria-hidden="true">›</span><b>CCNP<small>Học tại VNPro</small></b></div>
+      <p class="more">Hai chứng chỉ mình học tại VNPro, giúp mình có nền tảng vững để làm các dự án ở trên.</p>
+    </div>
+  </section>
+
+  <section id="lien-he" class="contact">
+    <div class="wrap">
+      <h2>Kết nối với mình<span>.</span></h2>
+      <p>Chọn một đường truyền bạn thích.</p>
+      <div class="reach">
+        <a class="rc" href="mailto:danggiabao01012006@gmail.com"><small>Email</small><b>danggiabao01012006@gmail.com</b></a>
+        <a class="rc" href="tel:0379932891"><small>Điện thoại</small><b>0379 932 891</b></a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 Đặng Gia Bảo</div></footer>
+<script>
+(function(){var pg=document.getElementById('pg');function u(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pg.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'}addEventListener('scroll',u,{passive:true});u()})();
+</script>
+</body>
+</html>
