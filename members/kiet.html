@@ -9,7 +9,88 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/member.css">
+<style>
+  :root {
+    --bg-color: #0b0f19;      /* Màu nền tổng thể (Xanh đen sâu) */
+    --card-bg: #111827;       /* Màu nền các card dự án/kỹ năng */
+    --text-color: #f3f4f6;    /* Màu chữ chính */
+    --text-muted: #9ca3af;    /* Màu chữ phụ */
+    --accent-color: #38bdf8;  /* Màu điểm nhấn (Xanh dương sáng) */
+  }
+
+  body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+  }
+
+  /* Tùy chỉnh màu nền cho các khung, card và section */
+  section, .top, footer {
+    background-color: transparent !important;
+  }
+
+  .project, .skill, .facts div {
+    background-color: var(--card-bg) !important;
+    border-color: #1f2937 !important;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, li, time, dt, dd {
+    color: var(--text-color);
+  }
+  
+  .lead, .role, p {
+    color: var(--text-muted);
+  }
+</style>
 </head>
+<!-- Hiệu ứng con trỏ chuột hạt sáng -->
+<style>
+  body { cursor: none; } /* Ẩn con trỏ mặc định */
+
+  .cursor-dot {
+    width: 8px; height: 8px; background: #38bdf8;
+    border-radius: 50%; position: fixed; pointer-events: none;
+    z-index: 9999; transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px; border: 2px solid rgba(56, 189, 248, 0.6);
+    border-radius: 50%; position: fixed; pointer-events: none;
+    z-index: 9998; transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, border-color 0.2s ease;
+  }
+</style>
+
+<div class="cursor-dot" id="dot"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<script>
+  const dot = document.getElementById('dot');
+  const ring = document.getElementById('ring');
+  let mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+
+  window.addEventListener('mousemove', (e) => {
+    mouse.targetX = e.clientX;
+    mouse.targetY = e.clientY;
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+  });
+
+  function render() {
+    // Thuật toán Smooth Lerp cho vòng ring đuổi theo
+    mouse.x += (mouse.targetX - mouse.x) * 0.2;
+    mouse.y += (mouse.targetY - mouse.y) * 0.2;
+    ring.style.left = mouse.x + 'px';
+    ring.style.top = mouse.y + 'px';
+    requestAnimationFrame(render);
+  }
+  render();
+
+  // Hiệu ứng Hover phóng to
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.style.transform = 'translate(-50%, -50%) scale(1.6)');
+    el.addEventListener('mouseleave', () => ring.style.transform = 'translate(-50%, -50%) scale(1)');
+  });
+</script>
 <body data-view="member">
 <!-- Nền động hiệu ứng Lập trình viên -->
 <canvas id="magic" data-mode="code"></canvas>
