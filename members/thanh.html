@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đoàn Duy Thanh – Business Analyst &amp; Mạng máy tính</title>
+<meta name="description" content="Portfolio của Đoàn Duy Thanh, sinh viên Công nghệ thông tin định hướng Business Analyst và Mạng máy tính.">
+<meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Đoàn Duy Thanh – Business Analyst &amp; Mạng máy tính">
+<meta property="og:description" content="Sinh viên Công nghệ thông tin, định hướng Business Analyst và Mạng máy tính.">
+<meta property="og:image" content="../assets/thanh.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b1220; --bg2:#101a2e; --card:#131f36; --line:#22314f;
+  --ink:#e8eefb; --mute:#8fa1c4; --cyan:#35e0d0; --amber:#ffb454; --rose:#ff6b8a;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --head:'Space Grotesk','Be Vietnam Pro',system-ui,sans-serif;
+  --body:'Be Vietnam Pro',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.7;font-size:16px;
+  background-image:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;background-position:-1px -1px;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;z-index:-1;
+  background:radial-gradient(900px 500px at 85% -5%,rgba(53,224,208,.16),transparent 60%),
+             radial-gradient(700px 500px at 0% 30%,rgba(255,180,84,.09),transparent 60%),
+             linear-gradient(var(--bg),var(--bg));opacity:.93}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.back{font-family:var(--mono);font-size:13px;color:var(--mute);transition:.2s}
+.back:hover{color:var(--cyan)}
+.top nav{display:flex;gap:4px}
+.top nav a{font-family:var(--mono);font-size:13px;color:var(--mute);padding:6px 12px;border-radius:8px;transition:.2s}
+.top nav a:hover{color:var(--ink);background:var(--card)}
+
+/* hero */
+.hero{padding:84px 0 70px}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
+.status{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;color:var(--cyan);
+  border:1px solid rgba(53,224,208,.35);background:rgba(53,224,208,.07);padding:6px 14px;border-radius:999px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 0 rgba(53,224,208,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(53,224,208,0)}100%{box-shadow:0 0 0 0 rgba(53,224,208,0)}}
+h1{font-family:var(--head);font-size:clamp(40px,6.4vw,76px);line-height:1.04;letter-spacing:-.03em;margin:22px 0 18px;font-weight:700}
+h1 span{background:linear-gradient(100deg,var(--cyan),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-family:var(--mono);color:var(--amber);font-size:15px;margin-bottom:14px}
+.lead{color:var(--mute);font-size:18px;max-width:540px}
+.btns{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:14px;font-weight:500;padding:12px 22px;border-radius:10px;border:1px solid var(--line);transition:.2s}
+.btn.main{background:var(--cyan);color:#06201d;border-color:var(--cyan);font-weight:700}
+.btn.main:hover{transform:translateY(-2px);box-shadow:0 10px 28px -10px var(--cyan)}
+.btn.alt:hover{border-color:var(--cyan);color:var(--cyan)}
+
+.portrait{position:relative;justify-self:center;width:min(100%,330px)}
+.portrait::before{content:"";position:absolute;inset:-14px;border:1px dashed rgba(53,224,208,.45);border-radius:28px;transform:rotate(3deg)}
+.portrait .frame{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;background:var(--card)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.portrait .tag{position:absolute;left:-18px;bottom:26px;font-family:var(--mono);font-size:12px;background:var(--bg2);
+  border:1px solid var(--line);border-left:3px solid var(--amber);padding:8px 12px;border-radius:8px;color:var(--ink)}
+.portrait .tag b{color:var(--amber);font-weight:500}
+
+/* sections */
+section{padding:76px 0;border-top:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--cyan);margin-bottom:10px}
+.eyebrow::before{content:"// "}
+h2{font-family:var(--head);font-size:clamp(28px,3.6vw,40px);letter-spacing:-.02em;margin-bottom:28px;font-weight:700}
+.cols{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:start}
+.about p{color:#c3cfe6;margin-bottom:16px}
+
+.facts{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.facts div{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:15px 20px;border-bottom:1px solid var(--line)}
+.facts div:last-child{border-bottom:0}
+.facts dt{font-family:var(--mono);font-size:12.5px;color:var(--amber);padding-top:2px}
+.facts dd{font-size:15px}
+
+/* skills */
+.tracks{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.track{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;position:relative;overflow:hidden}
+.track::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--c)}
+.track.ba{--c:var(--amber)} .track.net{--c:var(--cyan)}
+.track h3{font-family:var(--head);font-size:22px;margin-bottom:4px}
+.track .sub{font-family:var(--mono);font-size:12.5px;color:var(--c);margin-bottom:18px}
+.track ul{list-style:none}
+.track li{padding:14px 0;border-top:1px solid var(--line)}
+.track li b{display:block;font-weight:600;font-size:15.5px}
+.track li span{color:var(--mute);font-size:14px}
+.bridge{margin-top:22px;border:1px dashed var(--line);border-radius:14px;padding:18px 22px;color:var(--mute);font-size:15px;display:flex;gap:14px;align-items:flex-start}
+.bridge code{font-family:var(--mono);color:var(--cyan);font-size:14px;white-space:nowrap}
+
+/* project */
+.project{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.project .head{display:flex;align-items:center;gap:8px;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--bg2)}
+.project .head i{width:11px;height:11px;border-radius:50%;background:#2b3a5c}
+.project .head i:nth-child(1){background:var(--rose)} .project .head i:nth-child(2){background:var(--amber)} .project .head i:nth-child(3){background:var(--cyan)}
+.project .head span{margin-left:10px;font-family:var(--mono);font-size:12.5px;color:var(--mute)}
+.project .body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.project .txt{padding:30px}
+.project h3{font-family:var(--head);font-size:26px;margin-bottom:12px}
+.project p{color:#c3cfe6;margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin-bottom:18px}
+.chips li{font-family:var(--mono);font-size:12.5px;border:1px solid var(--line);background:var(--bg2);padding:4px 11px;border-radius:999px;color:var(--cyan)}
+.project small{display:block;font-family:var(--mono);font-size:12.5px;color:var(--mute)}
+.diagram{border-left:1px solid var(--line);background:
+  radial-gradient(circle at 1px 1px,#22314f 1px,transparent 0) 0 0/20px 20px;display:flex;align-items:center;justify-content:center;padding:20px}
+.diagram svg{width:100%;height:auto;max-width:380px}
+.node rect{fill:var(--bg2);stroke:var(--line);stroke-width:1.5}
+.node text{fill:var(--ink);font-family:var(--mono);font-size:13px;text-anchor:middle}
+.node .k{fill:var(--mute);font-size:10.5px}
+.wire{stroke:#2e4166;stroke-width:2;stroke-dasharray:5 6}
+.pkt{animation:fly 3.2s ease-in-out infinite}
+.pkt.back{animation-name:fly2;animation-delay:1.6s}
+@keyframes fly{0%{transform:translateX(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateX(150px);opacity:0}}
+@keyframes fly2{0%{transform:translateX(150px);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateX(0);opacity:0}}
+.project.next{margin-top:20px;border-style:dashed;background:transparent}
+.project.next .txt{padding:24px 30px}
+.project.next h3{font-size:19px;color:var(--mute)}
+.project.next p{margin:0;color:var(--mute);font-size:15px}
+
+/* activity */
+.log{font-family:var(--mono);font-size:14px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:22px 24px;color:var(--mute)}
+.log b{color:var(--cyan);font-weight:500}
+
+/* contact */
+.reach{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.rc{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;transition:.2s}
+.rc:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.rc .ic{flex:none;width:48px;height:48px;border-radius:12px;background:rgba(53,224,208,.1);display:grid;place-items:center}
+.rc svg{width:24px;height:24px;fill:none;stroke:var(--cyan);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rc small{display:block;font-family:var(--mono);font-size:12px;color:var(--mute)}
+.rc b{font-weight:600;font-size:16px;word-break:break-all}
+
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mute);font-family:var(--mono);font-size:13px;text-align:center}
+
+@media (max-width:860px){
+  .hero{padding:56px 0 50px}
+  .hero .wrap,.cols,.tracks,.reach,.project .body{grid-template-columns:1fr}
+  .portrait{order:-1;width:min(70%,260px)}
+  .diagram{border-left:0;border-top:1px solid var(--line)}
+  .top nav a:nth-child(n+4){display:none}
+  .bridge{flex-direction:column}
+  section{padding:56px 0}
+}
+@media (max-width:480px){
+  .top nav{display:none}
+  .wrap{padding:0 18px}
+  .portrait .tag{left:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="back" href="../index.html">‹ Quay lại Nhóm 5</a>
+    <nav aria-label="Điều hướng chính">
+      <a href="#gioi-thieu">Giới thiệu</a><a href="#ky-nang">Kỹ năng</a><a href="#du-an">Dự án</a><a href="#hoat-dong">Hoạt động</a><a href="#lien-he">Liên hệ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="status"><i aria-hidden="true"></i>Sinh viên năm 3 · CNTT</p>
+        <h1>Đoàn <span>Duy Thanh</span></h1>
+        <p class="role">Business Analyst &amp; Mạng máy tính</p>
+        <p class="lead">Hiểu nghiệp vụ, nắm vững kỹ thuật, kết nối hai phía thành một hệ thống chạy tốt.</p>
+        <div class="btns"><a class="btn main" href="#du-an">Xem dự án</a><a class="btn alt" href="#lien-he">Liên hệ</a></div>
+      </div>
+      <div class="portrait">
+        <div class="frame"><img src="../assets/thanh.jpg" alt="Ảnh chân dung Đoàn Duy Thanh" width="760" height="944"></div>
+        <div class="tag"><b>ping</b> thanh.local · online</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="gioi-thieu">
+    <div class="wrap cols">
+      <div class="about">
+        <p class="eyebrow">gioi_thieu</p>
+        <h2>Giới thiệu</h2>
+        <p>Mình là sinh viên năm 3 ngành Công nghệ thông tin, có tư duy logic, cẩn thận và yêu thích việc tìm hiểu, phân tích cách các hệ thống công nghệ thông tin hoạt động.</p>
+        <p>Mình định hướng phát triển theo Business Analyst (BA) và Mạng máy tính: rèn kỹ năng phân tích yêu cầu nghiệp vụ, mô hình hóa hệ thống, đồng thời tìm hiểu về cấu hình, quản trị và xử lý sự cố mạng. Mình học Mạng máy tính để có nền tảng kỹ thuật bổ trợ cho BA, và cũng muốn đủ năng lực để làm Network Engineer thực thụ.</p>
+        <p>Mục tiêu của mình là vận dụng kiến thức đã học, tích lũy kinh nghiệm thực tế để đáp ứng yêu cầu công việc sau khi tốt nghiệp.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>trường</dt><dd>Đại học Giao thông Vận tải TP. Hồ Chí Minh</dd></div>
+        <div><dt>ngành</dt><dd>Công nghệ thông tin</dd></div>
+        <div><dt>nhập học</dt><dd>2024, hiện là sinh viên năm 3</dd></div>
+        <div><dt>sở thích</dt><dd>Sưu tầm đồ công nghệ</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="ky-nang">
+    <div class="wrap">
+      <p class="eyebrow">ky_nang</p>
+      <h2>Hai hướng, một nền tảng</h2>
+      <div class="tracks">
+        <div class="track ba">
+          <h3>Business Analyst</h3>
+          <p class="sub">nghiệp vụ → yêu cầu</p>
+          <ul>
+            <li><b>Phân tích yêu cầu nghiệp vụ</b><span>Tìm hiểu nhu cầu và chuyển thành yêu cầu rõ ràng, dễ triển khai.</span></li>
+            <li><b>Mô hình hóa hệ thống</b><span>Biểu diễn luồng hoạt động và cấu trúc hệ thống bằng sơ đồ trực quan.</span></li>
+          </ul>
+        </div>
+        <div class="track net">
+          <h3>Mạng máy tính</h3>
+          <p class="sub">hạ tầng → vận hành</p>
+          <ul>
+            <li><b>Cấu hình và quản trị mạng</b><span>Tìm hiểu cách thiết lập, vận hành các thành phần trong mạng.</span></li>
+            <li><b>Xử lý sự cố mạng</b><span>Xác định nguyên nhân và hướng khắc phục khi hệ thống gặp lỗi.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="bridge"><code>BA + Network</code><span>Hiểu kỹ thuật giúp mình đặt yêu cầu sát thực tế hơn, và hiểu nghiệp vụ giúp mình biết hệ thống mạng phục vụ ai, để làm gì.</span></div>
+    </div>
+  </section>
+
+  <section id="du-an">
+    <div class="wrap">
+      <p class="eyebrow">du_an</p>
+      <h2>Dự án</h2>
+      <article class="project">
+        <div class="head"><i></i><i></i><i></i><span>UDM_08.tcp</span></div>
+        <div class="body">
+          <div class="txt">
+            <h3>UDM_08: Chat TCP Client–Server</h3>
+            <p>Dự án lập trình xây dựng ứng dụng chat giữa máy khách (Client) và máy chủ (Server) thông qua giao thức TCP. Dự án giúp mình hiểu cách hai đầu của một kết nối mạng thiết lập liên lạc và trao đổi dữ liệu với nhau.</p>
+            <ul class="chips"><li>TCP</li><li>Client–Server</li><li>Lập trình mạng</li><li>Socket</li></ul>
+            <small>Công nghệ chi tiết và đường dẫn: đang cập nhật.</small>
+          </div>
+          <div class="diagram" aria-hidden="true">
+            <svg viewBox="0 0 380 190">
+              <line class="wire" x1="95" y1="95" x2="285" y2="95"/>
+              <g class="node"><rect x="10" y="62" width="95" height="66" rx="12"/><text x="57" y="92">Client</text><text class="k" x="57" y="111">gửi / nhận</text></g>
+              <g class="node"><rect x="275" y="62" width="95" height="66" rx="12"/><text x="322" y="92">Server</text><text class="k" x="322" y="111">lắng nghe</text></g>
+              <g class="pkt"><rect x="100" y="85" width="26" height="20" rx="5" fill="#35e0d0"/></g>
+              <g class="pkt back"><rect x="100" y="85" width="26" height="20" rx="5" fill="#ffb454"/></g>
+              <text x="190" y="150" fill="#8fa1c4" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">TCP</text>
+            </svg>
+          </div>
+        </div>
+      </article>
+      <article class="project next">
+        <div class="txt">
+          <h3>Dự án tiếp theo</h3>
+          <p>Mình sẽ bổ sung thêm dự án tại đây.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="hoat-dong">
+    <div class="wrap">
+      <p class="eyebrow">hoat_dong</p>
+      <h2>Hoạt động</h2>
+      <div class="log"><b>$</b> mình sẽ bổ sung các hoạt động và kinh nghiệm tại đây.</div>
+    </div>
+  </section>
+
+  <section id="lien-he">
+    <div class="wrap">
+      <p class="eyebrow">lien_he</p>
+      <h2>Liên hệ</h2>
+      <div class="reach">
+        <a class="rc" href="mailto:duythanh3105206@gmail.com">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7.5 8 6 8-6"/></svg></span>
+          <span><small>Gmail</small><b>duythanh3105206@gmail.com</b></span>
+        </a>
+        <a class="rc" href="tel:0344884822">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 5.3 5.3l1.4-2.2L19 14.5V18a2 2 0 0 1-2 2A14 14 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+          <span><small>Số điện thoại</small><b>0344 884 822</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>© 2026 Đoàn Duy Thanh</footer>
+</body>
+</html>
