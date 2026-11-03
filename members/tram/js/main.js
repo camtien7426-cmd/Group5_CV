@@ -1,21 +1,15 @@
-// ===================================================
-// 8-BIT RETRO PORTFOLIO ENGINE - JAVASCRIPT
-// Features: Web Audio SFX, Dynamic Projects Render, TV Typing,
-// Mascot Dialogues, Trophy Modal, Client-Side Form Validation
-// ===================================================
+// JS – CÁC CHỨC NĂNG CỦA PORTFOLIO
 
 document.addEventListener("DOMContentLoaded", () => {
-    // ---------------------------------------------------
-    // 1. 8-BIT WEB AUDIO SYNTHESIZER
-    // Generates authentic NES/Gameboy sound waves in real time
-    // ---------------------------------------------------
+    // ===== 1. ÂM THANH =====
     let audioCtx = null;
     let sfxEnabled = true;
 
     // Load saved sound preference
-    if (localStorage.getItem("retro_sfx_enabled") !== null) {
-        sfxEnabled = localStorage.getItem("retro_sfx_enabled") === "true";
-    }
+    try {
+        const savedSfx = localStorage.getItem("retro_sfx_enabled");
+        if (savedSfx !== null) sfxEnabled = savedSfx === "true";
+    } catch (e) { /* Storage can be unavailable in private or restricted contexts. */ }
 
     function initAudioContext() {
         if (!audioCtx) {
@@ -28,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
             audioCtx.resume();
         }
     }
-
     // Play generic retro tone
     function playTone(freq, type = "square", duration = 0.08, vol = 0.1) {
         if (!sfxEnabled) return;
@@ -50,16 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             osc.start();
             osc.stop(audioCtx.currentTime + duration);
-        } catch (e) {
+        } catch (e) { 
             // Audio context not allowed or supported
         }
     }
-
     // Sound FX: Hover blip
     function playHoverSound() {
         playTone(660, "square", 0.04, 0.03);
     }
-
     // Sound FX: Button click
     function playClickSound() {
         if (!sfxEnabled) return;
@@ -67,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             initAudioContext();
             if (!audioCtx) return;
             const now = audioCtx.currentTime;
-            
+
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
             osc.type = "square";
@@ -83,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
             osc.stop(now + 0.12);
         } catch (e) {}
     }
-
     // Sound FX: Power-up / Modal Fanfare
     function playPowerUpSound() {
         if (!sfxEnabled) return;
@@ -132,12 +122,10 @@ document.addEventListener("DOMContentLoaded", () => {
             osc.stop(now + 0.35);
         } catch (e) {}
     }
-
     // Sound FX: Error Buzz
     function playErrorSound() {
         playTone(220, "sawtooth", 0.18, 0.08);
     }
-
     // Update SFX UI
     const sfxBtn = document.getElementById("sfx-toggle");
     const sfxIcon = document.getElementById("sfx-icon");
@@ -160,7 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
         sfxBtn.addEventListener("click", () => {
             initAudioContext();
             sfxEnabled = !sfxEnabled;
-            localStorage.setItem("retro_sfx_enabled", sfxEnabled.toString());
+            try {
+                localStorage.setItem("retro_sfx_enabled", sfxEnabled.toString());
+            } catch (e) { /* The current session can still toggle sound. */ }
             updateSfxUi();
             if (sfxEnabled) playCoinSound();
         });
@@ -177,115 +167,32 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ---------------------------------------------------
-    // 2. DYNAMIC PROJECTS RENDERING (DRY PRINCIPLE)
-    // Renders project cards from a structured data array
-    // ---------------------------------------------------
-    const projectsData = [
-        {
-            id: "PROJECT 01",
-            title: "FLUX MULTI FILE DOWNLOADER",
-            category: "MÔ HÌNH CLIENT–SERVER",
-            rank: "RANK: S",
-            image: "images/project_flux.jpg",
-            imageAlt: "Ảnh giao diện FLUX Multi File Downloader",
-            desc: "Ứng dụng tải nhiều tệp tin theo mô hình Client–Server, hỗ trợ tìm kiếm, quản lý và theo dõi tiến trình tải dữ liệu an toàn và ổn định.",
-            role: "Thiết kế một số chức năng giao diện, kiểm thử và viết báo cáo đồ án.",
-            tags: ["Python", "PySide6", "Socket", "TLS/SSL"]
-        },
-        {
-            id: "PROJECT 02",
-            title: "QUẢN LÝ VẬT TƯ XÂY DỰNG",
-            category: "DATABASE & WAREHOUSE",
-            rank: "RANK: S",
-            image: "images/project_inventory.jpg",
-            imageAlt: "Ảnh giao diện Quản Lý Vật Tư Xây Dựng",
-            desc: "Hệ thống quản lý vật tư, kho hàng và các nghiệp vụ nhập, xuất, chuyển kho dành cho doanh nghiệp xây dựng với cơ sở dữ liệu quan hệ chặt chẽ.",
-            role: "Xây dựng chức năng chuyển kho, xử lý tương tranh dữ liệu và kiểm thử hệ thống.",
-            tags: ["Python", "Streamlit", "SQL Server", "Concurrency"]
-        }
-    ];
-
-    function renderProjects() {
-        const projectsContainer = document.getElementById("projects-container");
-        if (!projectsContainer) return;
-
-        projectsContainer.innerHTML = projectsData.map(project => `
-            <div class="nes-container with-title is-rounded is-dark quest-card">
-                <p class="title">${project.id}</p>
-                <div>
-                    <div class="quest-img-wrapper">
-                        <img src="${project.image}" alt="${project.imageAlt}">
-                    </div>
-                    <div class="quest-header">
-                        <span class="quest-rank">${project.category}</span>
-                        <span class="quest-exp">${project.rank}</span>
-                    </div>
-                    <h3 class="quest-title">${project.title}</h3>
-                    <p class="quest-desc">${project.desc}</p>
-                    <div class="quest-role">
-                        <strong>Vai trò:</strong> ${project.role}
-                    </div>
-                    <div class="quest-tags">
-                        ${project.tags.map(tag => `<span class="quest-tag">${tag}</span>`).join("")}
-                    </div>
-                </div>
-            </div>
-        `).join("");
-    }
-
-    renderProjects();
     attachSoundEffects();
-
-    // ---------------------------------------------------
-    // 3. TV SCREEN TYPING EFFECT
-    // ---------------------------------------------------
-    const lines = document.querySelectorAll(".tv-text p, .tv-text h1, .start-btn");
-    const texts = Array.from(lines, line => line.textContent.trim());
-
-    lines.forEach(line => {
-        line.textContent = "";
-    });
-
     const startBtn = document.querySelector(".start-btn");
-    if (startBtn) {
-        startBtn.classList.remove("show");
-    }
+    if (startBtn) startBtn.addEventListener("click", playPowerUpSound);
 
-    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+    // Text stays in HTML as a fallback when JavaScript is unavailable.
+    const tvLines = Array.from(document.querySelectorAll(".tv-text p, .tv-text h1"));
+    const tvTexts = tvLines.map(line => Array.from(line.textContent.trim()));
+    tvLines.forEach(line => { line.textContent = ""; });
 
-    async function typingEffect() {
-        await sleep(800);
-
-        for (let i = 0; i < lines.length; i++) {
-            if (lines[i].classList.contains("start-btn")) {
-                lines[i].classList.add("show");
-                lines[i].textContent = texts[i];
-                playCoinSound();
-                continue;
-            }
-
-            for (const char of texts[i]) {
-                lines[i].textContent += char;
-                playTone(520, "sine", 0.02, 0.015);
-                await sleep(35);
-            }
-
-            await sleep(250);
+    let tvLineIndex = 0;
+    let tvCharacterIndex = 0;
+    function typeNextTvCharacter() {
+        if (tvLineIndex >= tvLines.length) return;
+        const characters = tvTexts[tvLineIndex];
+        if (tvCharacterIndex < characters.length) {
+            tvLines[tvLineIndex].textContent += characters[tvCharacterIndex++];
+            setTimeout(typeNextTvCharacter, 40);
+        } else {
+            tvLineIndex++;
+            tvCharacterIndex = 0;
+            setTimeout(typeNextTvCharacter, 180);
         }
     }
+    if (tvLines.length) setTimeout(typeNextTvCharacter, 250);
 
-    typingEffect();
-
-    if (startBtn) {
-        startBtn.addEventListener("click", () => {
-            playPowerUpSound();
-        });
-    }
-
-    // ---------------------------------------------------
-    // 4. INTERACTIVE CORNER MASCOT
-    // ---------------------------------------------------
+    // ===== 2. NHÂN VẬT GÓC MÀN HÌNH =====
     const mascotSpriteBtn = document.getElementById("mascot-sprite-btn");
     const mascotBalloon = document.getElementById("mascot-balloon");
     const mascotText = document.getElementById("mascot-text");
@@ -295,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Trâm hiện đang theo học ngành CNTT tại Trường ĐH Giao thông Vận tải TP.HCM (Viện Đào tạo CLC) 🎓",
         "Dự án nổi bật: FLUX Multi File Downloader & Quản Lý Vật Tư Xây Dựng 💻",
         "Kỹ năng: Python, PySide6, Socket, SQL Server, HTML/CSS/JS, Git/GitHub 🛠️",
-        "Sở thích của Trâm: Xem phim, chơi game và móc len! 🎮",
+        "Sở thích của Trâm: Xem phim, chơi game và làm đồ handmade  ! 🎮",
         "Email kết nối: thachthitram2k6@gmail.com | SĐT: 0356796802 📞",
         "Cảm ơn bạn đã ghé thăm Portfolio của Trâm! Chúc bạn một ngày thật vui vẻ! 🌟"
     ];
@@ -317,9 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
         mascotBalloon.addEventListener("click", cycleMascotQuote);
     }
 
-    // ---------------------------------------------------
-    // 5. ACHIEVEMENTS / TROPHY MODAL
-    // ---------------------------------------------------
+    // ===== 3. HỘP THOẠI THÀNH TÍCH =====
     const trophyModal = document.getElementById("trophy-modal");
     const openTrophyBtn = document.getElementById("open-trophy-btn");
     const closeTrophyBtn = document.getElementById("close-trophy-modal");
@@ -354,9 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ---------------------------------------------------
-    // 6. MOBILE MENU TOGGLE
-    // ---------------------------------------------------
+    // ===== 4. MENU ĐIỆN THOẠI =====
     const mobileMenuBtn = document.getElementById("mobile-menu-btn");
     const navMenu = document.getElementById("nav-menu");
 
@@ -380,9 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ---------------------------------------------------
-    // 7. SCROLLSPY & 2-WAY VERTICAL SCROLL DOCK
-    // ---------------------------------------------------
+    // ===== 5. NÚT CUỘN TRANG VÀ MENU ĐANG CHỌN =====
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-link");
     const scrollDock = document.getElementById("scroll-dock");
@@ -414,7 +315,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             playClickSound();
         } else {
-            // Already at or past the last section, scroll to footer
             window.scrollTo({
                 top: document.documentElement.scrollHeight,
                 behavior: "smooth"
@@ -435,7 +335,6 @@ document.addEventListener("DOMContentLoaded", () => {
         footerTopBtn.addEventListener("click", scrollToHeader);
     }
 
-    // Auto-hide scroll dock when there is NO movement / interaction
     let dockHideTimer = null;
     let isDockHovered = false;
 
@@ -466,7 +365,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Trigger visibility on mouse movement, scrolling, or touch swipe
     window.addEventListener("mousemove", triggerDockVisibility, { passive: true });
     window.addEventListener("scroll", triggerDockVisibility, { passive: true });
     window.addEventListener("touchmove", triggerDockVisibility, { passive: true });
@@ -492,10 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ---------------------------------------------------
-    // 8. JAVASCRIPT CONTACT FORM VALIDATION
-    // Robust client-side validation with inline field errors
-    // ---------------------------------------------------
+    // ===== 6. KIỂM TRA FORM LIÊN HỆ =====
     const contactForm = document.getElementById("retro-contact-form");
     const nameInput = document.getElementById("contact-name");
     const emailInput = document.getElementById("contact-email");
@@ -545,7 +440,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let isValid = true;
 
-            // 1. Validate Name
             const nameVal = nameInput ? nameInput.value.trim() : "";
             if (!nameVal) {
                 showError(nameInput, nameError, "Vui lòng nhập họ và tên của bạn!");
@@ -557,7 +451,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 clearError(nameInput, nameError);
             }
 
-            // 2. Validate Email
             const emailVal = emailInput ? emailInput.value.trim() : "";
             if (!emailVal) {
                 showError(emailInput, emailError, "Vui lòng nhập địa chỉ email liên hệ!");
@@ -569,7 +462,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 clearError(emailInput, emailError);
             }
 
-            // 3. Validate Message
             const messageVal = messageInput ? messageInput.value.trim() : "";
             if (!messageVal) {
                 showError(messageInput, messageError, "Vui lòng nhập nội dung tin nhắn!");
@@ -581,68 +473,102 @@ document.addEventListener("DOMContentLoaded", () => {
                 clearError(messageInput, messageError);
             }
 
-            // Handle submission outcome
             if (isValid) {
                 playPowerUpSound();
 
                 if (formFeedback) {
-                    formFeedback.innerHTML = `⚔️ <strong>QUEST ACCEPTED!</strong><br>Cảm ơn <strong>${nameVal}</strong>! Lời nhắn của bạn đã được gửi thành công đến Thạch Thị Trâm. Mình sẽ phản hồi bạn qua email <strong>${emailVal}</strong> trong thời gian sớm nhất!`;
+                    formFeedback.innerHTML = `⚔️ <strong>QUEST ACCEPTED!</strong><br>Cảm ơn <strong>${nameVal}</strong>! Nội dung hợp lệ! Đây là biểu mẫu minh họa, chưa được kết nối để gửi email. Bạn có thể liên hệ trực tiếp qua nút Gửi Email ở bên cạnh.`;
                     formFeedback.classList.add("active");
                 }
 
-                contactForm.reset();
             } else {
                 playErrorSound();
             }
         });
     }
 
-    // ---------------------------------------------------
-    // 9. RESUME / CV DOWNLOAD SIMULATION
-    // ---------------------------------------------------
-    const resumeBtn = document.getElementById("resume-btn");
-    if (resumeBtn) {
-        resumeBtn.addEventListener("click", () => {
-            playCoinSound();
-            alert("📄 [CV / RESUME]\n\nTính năng tải CV đang được chuẩn bị. Bạn có thể gửi email trực tiếp tới thachthitram2k6@gmail.com để nhận CV chi tiết nhé!");
-        });
-    }
+    // ===== 7. ÂM THANH MỐC HỌC VẤN =====
+    document.addEventListener("education:milestone", playCoinSound);
 
-    // ---------------------------------------------------
-    // 10. TECH ARSENAL INSPECTOR INTERACTION
-    // Real-time HUD readout when hovering/clicking tech icons
-    // ---------------------------------------------------
+    // ===== 8. KỸ NĂNG KHI NHẤN VÀO BIỂU TƯỢNG =====
     const techSlots = document.querySelectorAll(".tech-slot");
     const inspectorIcon = document.getElementById("inspector-icon");
     const inspectorName = document.getElementById("inspector-name");
-    const inspectorStatus = document.getElementById("inspector-status");
     const inspectorDesc = document.getElementById("inspector-desc");
 
-    if (techSlots.length > 0 && inspectorName && inspectorDesc) {
-        techSlots.forEach(slot => {
-            function activateSlot() {
-                techSlots.forEach(s => s.classList.remove("is-active"));
-                slot.classList.add("is-active");
+    function skillRating(slot) {
+        const raw = (slot.getAttribute("data-level") || "").trim();
+        const value = Number(raw);
+        const valid = raw !== "" && Number.isFinite(value) && value >= 0 && value <= 100;
+        return {
+            valid,
+            value: valid ? Math.round(value) : 0,
+            percent: valid ? `${Math.round(value)}%` : "—%",
+            label: !valid ? "Chưa tự đánh giá" : value <= 25 ? "Đang học nền tảng" :
+                value <= 50 ? "Làm được chức năng đơn giản" :
+                value <= 75 ? "Áp dụng được trong dự án" : "Xử lý được bài toán phức tạp"
+        };
+    }
 
-                const iconBox = slot.querySelector(".tech-icon-box");
-                const iconHtml = iconBox ? iconBox.innerHTML : "";
-                const techName = slot.getAttribute("data-tech") || "";
-                const techTag = slot.getAttribute("data-tag") || "ACTIVE";
-                const techDesc = slot.getAttribute("data-desc") || "";
-
-                if (inspectorIcon) inspectorIcon.innerHTML = iconHtml;
-                if (inspectorName) inspectorName.textContent = techName;
-                if (inspectorStatus) inspectorStatus.textContent = techTag;
-                if (inspectorDesc) inspectorDesc.textContent = techDesc;
+    function updateSkillRating(progress, percent, level, rating) {
+        if (progress) {
+            progress.value = rating.value;
+            progress.setAttribute("aria-valuetext", `${rating.percent} · ${rating.label}`);
+            const meter = progress.closest(".skill-meter");
+            if (meter) {
+                meter.style.setProperty("--skill-fill", `${rating.value}%`);
+                meter.setAttribute("data-rated", String(rating.valid));
             }
+        }
+        if (percent) percent.textContent = rating.percent;
+        if (level) level.textContent = rating.label;
+    }
 
-            slot.addEventListener("mouseenter", () => {
-                activateSlot();
-            });
+    function updateSkillList(id, content) {
+        const list = document.getElementById(id);
+        if (!list) return;
+        const items = (content || "[Điền nội dung]").split("|").map(item => item.trim()).filter(Boolean);
+        list.replaceChildren(...items.map(text => {
+            const item = document.createElement("li");
+            item.textContent = text;
+            return item;
+        }));
+    }
 
-            slot.addEventListener("click", () => {
-                activateSlot();
+    if (techSlots.length > 0 && inspectorName && inspectorDesc) {
+        function activateSlot(slot) {
+            techSlots.forEach(other => {
+                other.classList.remove("is-active");
+                other.setAttribute("aria-pressed", "false");
             });
+            slot.classList.add("is-active");
+            slot.setAttribute("aria-pressed", "true");
+            const iconBox = slot.querySelector(".tech-icon-box");
+            if (inspectorIcon) inspectorIcon.innerHTML = iconBox ? iconBox.innerHTML : "";
+            inspectorName.textContent = slot.getAttribute("data-tech") || "";
+            const inspector = document.getElementById("tech-inspector");
+            if (inspector) {
+                const color = getComputedStyle(slot).getPropertyValue("--skill-color").trim();
+                inspector.style.setProperty("--skill-color", color || "#92cc41");
+            }
+            inspectorDesc.textContent = slot.getAttribute("data-desc") || "";
+            updateSkillRating(document.getElementById("inspector-progress"),
+                document.getElementById("inspector-percent"), document.getElementById("inspector-level"), skillRating(slot));
+            updateSkillList("inspector-known", slot.getAttribute("data-known"));
+            updateSkillList("inspector-learning", slot.getAttribute("data-learning"));
+            const evidence = document.getElementById("inspector-evidence");
+            if (evidence) {
+                const url = slot.getAttribute("data-evidence-url") || "#projects";
+                evidence.setAttribute("href", /^(#[\w-]+|https?:\/\/)/i.test(url) ? url : "#projects");
+                evidence.textContent = `${slot.getAttribute("data-evidence-title") || "Xem dự án"} →`;
+            }
+        }
+
+        techSlots.forEach(slot => {
+            updateSkillRating(slot.querySelector(".skill-progress"), slot.querySelector(".skill-percent"),
+                slot.querySelector(".skill-level"), skillRating(slot));
+            slot.addEventListener("click", () => activateSlot(slot));
         });
+        activateSlot(Array.from(techSlots).find(slot => slot.classList.contains("is-active")) || techSlots[0]);
     }
 });
