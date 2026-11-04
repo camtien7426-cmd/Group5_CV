@@ -1,82 +1,360 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nhóm 5 – Portfolio</title>
-<meta name="description" content="Nhóm 5: portfolio của sáu thành viên trong nhóm. Chọn một thành viên để xem.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/team.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thu Thập Lựa Chọn & Giải Mã Tính Cách</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts cho giao diện mềm mại -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body data-view="team">
-<canvas id="magic" data-mode="team"></canvas>
+<body>
 
-<div id="view-team">
-  <main class="tm">
-    <div class="thero">
-      <svg class="circle" viewBox="0 0 600 600" aria-hidden="true">
-        <g><circle cx="300" cy="300" r="290" stroke-dasharray="2 9"/><circle cx="300" cy="300" r="268"/>
-           <polygon points="300,40 525,430 75,430"/><polygon points="300,560 75,170 525,170"/></g>
-        <g class="rev"><circle cx="300" cy="300" r="215" stroke-dasharray="18 6 2 6"/><circle cx="300" cy="300" r="150"/>
-           <rect x="205" y="205" width="190" height="190"/><rect x="205" y="205" width="190" height="190" transform="rotate(45 300 300)"/></g>
-      </svg>
-      <h1><i>Nhóm</i> 5</h1>
-      <div class="orn" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M7 0l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></svg></div>
-      <p>Nhóm mình có 6 thành viên. Bấm vào tên để xem thêm chi tiết nè.</p>
-    </div>
-    <ul class="grid" id="grid"></ul>
-  </main>
-</div>
+    <!-- Header dính ở đầu trang -->
+    <!-- HEADER DECOR NÂNG CẤP VỚI STICKER VÀ KHUNG GLASSMORPHISM -->
+    <header class="main-header">
+        <!-- Nhãn dán Sticker bóng khí bay lơ lửng xung quanh header -->
+        <div class="floating-sticker sticker-1">💖</div>
+        <div class="floating-sticker sticker-2">✨</div>
+        <div class="floating-sticker sticker-3">🔮</div>
+        <div class="floating-sticker sticker-4">🎨</div>
 
-<script src="assets/magic.js"></script>
-<script>
-/* ============================================================
-   DANH SÁCH THÀNH VIÊN. Khi một bạn đã tải trang của mình lên,
-   đổi  ready: false  thành  ready: true  ở dòng của bạn đó.
-   - file:  tên file trong thư mục members (không cần ghi .html)
-   - photo: đường dẫn ảnh, ví dụ "assets/thanh.jpg" (để "" thì hiện chữ cái đầu)
-   ============================================================ */
-var MEMBERS = [
-  { name: "Đoàn Duy Thanh",      file: "thanh", ready: true, photo: "assets/thanh.jpg" },
-  { name: "Nguyễn Thị Cẩm Tiên", file: "tien",  ready: true,  photo: "assets/tien.jpg" },
-  { name: "Đặng Gia Bảo", file: "bao/bao", ready: true, photo: "assets/bao.jpg" },
-  { name: "Thạch Thị Trâm", file: "tram/tram", ready: true, photo: "assets/tram.jpg" },
-  { name: "Nguyễn Thị Anh Thư",  file: "thu",   ready: true,  photo: "assets/thu.jpg" },
-  { name: "Nguyễn Tuấn Kiệt",    file: "kiet/kiet",  ready: true, photo: "assets/kiet.jpg" }
-];
+        <div class="header-glass-card">
+            <!-- Hàng Tag Nhãn Dán Trí Tuệ / Hot -->
+            <div class="badge-row">
+                <span class="sticker-badge hot-tag">🔥 HOT TEST 2026</span>
+                <span class="sticker-badge free-tag">✨ KHÁM PHÁ BẢN THÂN</span>
+                <span class="sticker-badge quiz-tag">🎯 10 CÂU HOỎI</span>
+            </div>
 
-(function () {
-  var grid = document.getElementById("grid");
-  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+            <!-- Tiêu đề chính gắn Icon nổi bật 3D -->
+            <h1 class="main-title">
+                <span class="title-sparkle">🌟</span>
+                GIẢI MÃ TÍNH CÁCH BẢN THÂN
+                <span class="title-sparkle">🔮</span>
+            </h1>
 
-  MEMBERS.forEach(function (m) {
-    var li = document.createElement("li");
-    var initial = m.name.trim().split(/\s+/).pop().charAt(0).toUpperCase();
-    var av = m.photo ? '<img src="' + m.photo + '" alt="Ảnh ' + m.name + '">' : initial;
-    var inner = '<span class="av">' + av + '</span><span><b>' + m.name + '</b><small>' + (m.ready ? "Xem portfolio" : "Đang cập nhật") + "</small></span>";
-    li.innerHTML = m.ready
-      ? '<a class="card on" href="members/' + m.file + '.html" data-magic>' + inner + "</a>"
-      : '<div class="card off">' + inner + "</div>";
-    grid.appendChild(li);
-  });
+            <!-- Tiêu đề phụ decor icon nét đứt pastel -->
+            <p class="subtitle-decorated">
+                <span>✨</span> Khám phá góc khuất tiềm ẩn & Định hướng nghề nghiệp tương lai <span>✨</span>
+            </p>
 
-  /* Bấm vào thẻ: vòng sáng lan ra rồi mới chuyển trang */
-  grid.addEventListener("click", function (e) {
-    var a = e.target.closest("a[data-magic]");
-    if (!a || reduce || e.metaKey || e.ctrlKey || e.shiftKey) return;
-    e.preventDefault();
-    var r = a.getBoundingClientRect(), p = document.createElement("div");
-    p.className = "portal";
-    p.style.setProperty("--x", (r.left + r.width / 2) + "px");
-    p.style.setProperty("--y", (r.top + r.height / 2) + "px");
-    document.body.appendChild(p);
-    requestAnimationFrame(function () { requestAnimationFrame(function () { p.classList.add("go"); }); });
-    setTimeout(function () { location.href = a.href; }, 720);
-  });
-  addEventListener("pageshow", function () { document.querySelectorAll(".portal").forEach(function (p) { p.remove(); }); });
-})();
-</script>
+            <!-- Thanh tiến trình thiết kế mới -->
+            <div class="progress-box-custom">
+                <div class="progress-labels">
+                    <span class="label-title">📊 Tiến Trình Làm Bài</span>
+                    <span id="progress-text" class="label-count">0/10 câu</span>
+                </div>
+                <div class="progress-bar-track">
+                    <div class="progress-fill-animated" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="quiz-container">
+        
+        <!-- CÂU HOỎI 1 -->
+        <section class="question-card" id="q-card-1">
+            <div class="q-header">
+                <span class="q-badge">Câu 01</span>
+                <h3 class="q-title">Khi đối mặt với một quyết định lớn trong cuộc sống, bạn sẽ:</h3>
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-question="1" data-option="A">
+                    <span class="opt-key">A</span>
+                    <span class="opt-text">Phân tích kỹ càng số liệu, lập bảng ưu/nhược điểm</span>
+                </button>
+                <button class="option-btn" data-question="1" data-option="B">
+                    <span class="opt-key">B</span>
+                    <span class="opt-text">Hỏi xin ý kiến và lời khuyên từ gia đình, bạn bè</span>
+                </button>
+                <button class="option-btn" data-question="1" data-option="C">
+                    <span class="opt-key">C</span>
+                    <span class="opt-text">Quyết định nhanh chóng dựa trên trực giác và mục tiêu</span>
+                </button>
+                <button class="option-btn" data-question="1" data-option="D">
+                    <span class="opt-key">D</span>
+                    <span class="opt-text">Tìm kiếm những hướng đi độc đáo, chưa ai từng làm</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- CÂU HOỎI 2 -->
+        <section class="question-card" id="q-card-2">
+            <div class="q-header">
+                <span class="q-badge">Câu 02</span>
+                <h3 class="q-title">Một ngày cuối tuần lý tưởng của bạn trông như thế nào?</h3>
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-question="2" data-option="A">
+                    <span class="opt-key">A</span>
+                    <span class="opt-text">Ở nhà đọc sách, dọn dẹp và sắp xếp lại không gian sống</span>
+                </button>
+                <button class="option-btn" data-question="2" data-option="B">
+                    <span class="opt-key">B</span>
+                    <span class="opt-text">Tụ tập cà phê, ăn uống tâm sự cùng hội bạn thân</span>
+                </button>
+                <button class="option-btn" data-question="2" data-option="C">
+                    <span class="opt-key">C</span>
+                    <span class="opt-text">Tham gia các hoạt động thể thao, leo núi hoặc sự kiện</span>
+                </button>
+                <button class="option-btn" data-question="2" data-option="D">
+                    <span class="opt-key">D</span>
+                    <span class="opt-text">Vẽ tranh, nghe nhạc hoặc đi lang thang chụp ảnh một mình</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- CÂU HOỎI 3 -->
+        <section class="question-card" id="q-card-3">
+            <div class="q-header">
+                <span class="q-badge">Câu 03</span>
+                <h3 class="q-title">Trong công việc nhóm, người khác quý nhất ở bạn đặc điểm nào?</h3>
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-question="3" data-option="A">
+                    <span class="opt-key">A</span>
+                    <span class="opt-text">Sự cẩn thận, đúng giờ và luôn làm việc đúng quy trình</span>
+                </button>
+                <button class="option-btn" data-question="3" data-option="B">
+                    <span class="opt-key">B</span>
+                    <span class="opt-text">Sự hòa đồng, biết lắng nghe và giữ không khí vui vẻ</span>
+                </button>
+                <button class="option-btn" data-question="3" data-option="C">
+                    <span class="opt-key">C</span>
+                    <span class="opt-text">Khả năng dứt khoát, dẫn dắt và thúc đẩy mọi người</span>
+                </button>
+                <button class="option-btn" data-question="3" data-option="D">
+                    <span class="opt-key">D</span>
+                    <span class="opt-text">Liên tục nghĩ ra các ý tưởng mới lạ và góc nhìn đột phá</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- CÂU HOỎI 4 -->
+        <section class="question-card" id="q-card-4">
+            <div class="q-header">
+                <span class="q-badge">Câu 04</span>
+                <h3 class="q-title">Phản ứng của bạn khi kế hoạch đột ngột bị thay đổi?</h3>
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-question="4" data-option="A">
+                    <span class="opt-key">A</span>
+                    <span class="opt-text">Bình tĩnh đánh giá tình hình và kích hoạt ngay kế hoạch B</span>
+                </button>
+                <button class="option-btn" data-question="4" data-option="B">
+                    <span class="opt-key">B</span>
+                    <span class="opt-text">Vui vẻ chấp nhận và làm theo sự sắp xếp của đa số</span>
+                </button>
+                <button class="option-btn" data-question="4" data-option="C">
+                    <span class="opt-key">C</span>
+                    <span class="opt-text">Chủ động đứng ra điều phối lại mọi việc theo hướng mới</span>
+                </button>
+                <button class="option-btn" data-question="4" data-option="D">
+                    <span class="opt-key">D</span>
+                    <span class="opt-text">Thấy hào hứng vì bất ngờ luôn mang lại trải nghiệm thú vị</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- CÂU HOỎI 5 -->
+        <section class="question-card" id="q-card-5">
+            <h3 class="q-title">5. Góc làm việc hay học tập mơ ước của bạn như thế nào?</h3>
+            <div class="options-grid">
+                <button class="option-btn" data-question="5" data-option="A">
+                    <span class="opt-key">A</span>
+                    <span class="opt-text">Ngăn nắp, tối giản, mọi thứ được sắp xếp có trật tự</span>
+                </button>
+                <button class="option-btn" data-question="5" data-option="B">
+                    <span class="opt-key">B</span>
+                    <span class="opt-text">Ấm cúng, nhiều ảnh kỷ niệm chụp cùng người thân, bạn bè</span>
+                </button>
+                <button class="option-btn" data-question="5" data-option="C">
+                    <span class="opt-key">C</span>
+                    <span class="opt-text">Hiện đại, sang trọng với đầy đủ thiết bị công nghệ cao</span>
+                </button>
+                <button class="option-btn" data-question="5" data-option="D">
+                    <span class="opt-key">D</span>
+                    <span class="opt-text">Đầy màu sắc, trang trí phá cách và nhiều vật dụng nghệ thuật</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- CÂU HOỎI 6 -->
+        <section class="question-card" id="q-card-6">
+            <h3 class="q-title">6. Khi nhận phải lời nhận xét trái chiều từ người khác, bạn sẽ:</h3>
+            <div class="options-grid">
+                <button class="option-btn" data-question="6" data-option="A">
+                    <span class="opt-key">A</span>
+                    <span class="opt-text">Tìm lập luận và bằng chứng thực tế để chứng minh mình đúng</span>
+                </button>
+                <button class="option-btn" data-question="6" data-option="B">
+                    <span class="opt-key">B</span>
+                    <span class="opt-text">Nhẹ nhàng lắng nghe để tránh gây mâu thuẫn hay mất lòng</span>
+                </button>
+                <button class="option-btn" data-question="6" data-option="C">
+                    <span class="opt-key">C</span>
+                    <span class="opt-text">Thẳng thắn tranh luận để bảo vệ quan điểm đến cùng</span>
+                </button>
+                <button class="option-btn" data-question="6" data-option="D">
+                    <span class="opt-key">D</span>
+                    <span class="opt-text">Tò mò xem xét góc nhìn mới của họ xem có gì hay ho không</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- CÂU HOỎI 7 -->
+        <section class="question-card" id="q-card-7">
+            <h3 class="q-title">7. Yếu tố nào là động lực lớn nhất giúp bạn nỗ lực mỗi ngày?</h3>
+            <div class="options-grid">
+                <button class="option-btn" data-question="7" data-option="A">
+                    <span class="opt-key">A</span>
+                    <span class="opt-text">Sự hoàn thiện bản thân và cuộc sống ổn định, an toàn</span>
+                </button>
+                <button class="option-btn" data-question="7" data-option="B">
+                    <span class="opt-key">B</span>
+                    <span class="opt-text">Tình cảm gia đình và mang lại niềm vui cho người xung quanh</span>
+                </button>
+                <button class="option-btn" data-question="7" data-option="C">
+                    <span class="opt-key">C</span>
+                    <span class="opt-text">Danh tiếng, sự thăng tiến và vị thế dẫn đầu</span>
+                </button>
+                <button class="option-btn" data-question="7" data-option="D">
+                    <span class="opt-key">D</span>
+                    <span class="opt-text">Sự tự do khám phá và theo đuổi đam mê cá nhân</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- CÂU HOỎI 8 -->
+        <section class="question-card" id="q-card-8">
+            <h3 class="q-title">8. Khi bạn bè tìm đến bạn để tâm sự chuyện buồn, bạn sẽ:</h3>
+            <div class="options-grid">
+                <button class="option-btn" data-question="8" data-option="A">
+                    <span class="opt-key">A</span>
+                    <span class="opt-text">Đưa ra lời khuyên logic và các bước giải quyết vấn đề</span>
+                </button>
+                <button class="option-btn" data-question="8" data-option="B">
+                    <span class="opt-key">B</span>
+                    <span class="opt-text">Lắng nghe chân thành, ôm và đồng cảm với cảm xúc của họ</span>
+                </button>
+                <button class="option-btn" data-question="8" data-option="C">
+                    <span class="opt-key">C</span>
+                    <span class="opt-text">Xắn tay áo giúp họ giải quyết tận gốc nguyên nhân rắc rối</span>
+                </button>
+                <button class="option-btn" data-question="8" data-option="D">
+                    <span class="opt-key">D</span>
+                    <span class="opt-text">Rủ họ đi chơi, đổi không khí để quên đi nỗi buồn</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- CÂU HOỎI 9 -->
+        <section class="question-card" id="q-card-9">
+            <h3 class="q-title">9. Phong cách trang phục thường ngày của bạn phản ánh điều gì?</h3>
+            <div class="options-grid">
+                <button class="option-btn" data-question="9" data-option="A">
+                    <span class="opt-key">A</span>
+                    <span class="opt-text">Sự chỉn chu, lịch sự, đúng chuẩn mực và gọn gàng</span>
+                </button>
+                <button class="option-btn" data-question="9" data-option="B">
+                    <span class="opt-key">B</span>
+                    <span class="opt-text">Sự nhẹ nhàng, nhã nhặn, ưu tiên cảm giác thoải mái</span>
+                </button>
+                <button class="option-btn" data-question="9" data-option="C">
+                    <span class="opt-key">C</span>
+                    <span class="opt-text">Sự sang trọng, nổi bật, tự tin khẳng định bản thân</span>
+                </button>
+                <button class="option-btn" data-question="9" data-option="D">
+                    <span class="opt-key">D</span>
+                    <span class="opt-text">Sự phá cách, phối đồ ngẫu hứng không theo quy tắc nào</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- CÂU HOỎI 10 -->
+        <section class="question-card" id="q-card-10">
+            <h3 class="q-title">10. Mục tiêu lớn nhất của bạn trong 5 năm tới là gì?</h3>
+            <div class="options-grid">
+                <button class="option-btn" data-question="10" data-option="A">
+                    <span class="opt-key">A</span>
+                    <span class="opt-text">Trở thành chuyên gia giỏi trong lĩnh vực của mình</span>
+                </button>
+                <button class="option-btn" data-question="10" data-option="B">
+                    <span class="opt-key">B</span>
+                    <span class="opt-text">Xây dựng tổ ấm hạnh phúc và các mối quan hệ bền chặt</span>
+                </button>
+                <button class="option-btn" data-question="10" data-option="C">
+                    <span class="opt-key">C</span>
+                    <span class="opt-text">Đạt vị trí quản lý/lãnh đạo và tự do tài chính</span>
+                </button>
+                <button class="option-btn" data-question="10" data-option="D">
+                    <span class="opt-key">D</span>
+                    <span class="opt-text">Tự tay tạo ra một sản phẩm/dự án mang dấu ấn riêng</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- NÚT XEM KẾT QUẢ -->
+        <div class="submit-wrapper">
+            <button id="submit-btn">XEM THỐNG KÊ & GIẢI MÃ TÍNH CÁCH ✨</button>
+        </div>
+
+        <!-- KHU VỰC THỐNG KÊ & KẾT QUẢ (Ban đầu ẩn) -->
+        <section id="result-section" class="hidden">
+        <div class="section-badge">✨ KẾT QUẢ HOÀN THÀNH</div>
+        <h2 class="result-title">BÁO CÁO THỐNG KÊ & GIẢI MÃ TÍNH CÁCH</h2>
+        
+        <!-- Biểu đồ phần trăm -->
+        <div class="stats-container">
+            <div class="stat-row">
+                <div class="stat-info">
+                    <span class="stat-label">🎯 Đáp án A (Lý Trí & Phân Tích)</span>
+                    <span class="stat-value" id="val-A">0%</span>
+                </div>
+                <div class="stat-track"><div class="stat-fill fill-pink" id="bar-A"></div></div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-info">
+                    <span class="stat-label">💖 Đáp án B (Tình Cảm & Kết Nối)</span>
+                    <span class="stat-value" id="val-B">0%</span>
+                </div>
+                <div class="stat-track"><div class="stat-fill fill-blue" id="bar-B"></div></div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-info">
+                    <span class="stat-label">👑 Đáp án C (Lãnh Đạo & Quyết Đoán)</span>
+                    <span class="stat-value" id="val-C">0%</span>
+                </div>
+                <div class="stat-track"><div class="stat-fill fill-purple" id="bar-C"></div></div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-info">
+                    <span class="stat-label">🎨 Đáp án D (Sáng Tạo & Tự Do)</span>
+                    <span class="stat-value" id="val-D">0%</span>
+                </div>
+                <div class="stat-track"><div class="stat-fill fill-mint" id="bar-D"></div></div>
+            </div>
+        </div>
+
+        <!-- Khối Giải Mã Tính Cách Đã Decor Nổi Bật -->
+        <div class="verdict-container" id="verdict-text">
+            <!-- Nội dung JS tự chèn các thẻ Decor vào đây -->
+        </div>
+
+        <!-- Nút Làm lại thiết kế lại dạng Glow Button -->
+        <div class="reset-wrapper">
+            <button id="reset-btn">
+                <span class="btn-icon">🔄</span> LÀM LẠI BÀI TRẮC NGHIỆM
+            </button>
+        </div>
+    </section>
+    </main>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
